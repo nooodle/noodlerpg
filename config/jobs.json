@@ -1,18 +1,18 @@
-[
-    {
+{
+    "engineer": {
         "name": "Engineer",
         "avatar_alive": "/jobs/engineer-alive.png",
         "avatar_dead": "/jobs/engineer-dead.png",
         "mp_multiplier_low_range": 1,
-        "mp_multiplier_high_range": 3,
         "speed_multiplier_low_range": 3,
+        "mp_multiplier_high_range": 3,
         "speed_multiplier_high_range": 6,
         "moxie_multiplier_low_range": 6,
         "moxie_multiplier_high_range": 9,
         "min_level_access": 1,
         "prerequisite_job": false
     },
-    {
+    "technician": {
         "name": "Technician",
         "avatar_alive": "/jobs/technician-alive.png",
         "avatar_dead": "/jobs/technician-dead.png",
@@ -25,4 +25,4 @@
         "min_level_access": 1,
         "prerequisite_job": false
     }
-]
+}

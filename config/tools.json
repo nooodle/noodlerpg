@@ -1,5 +1,5 @@
-[
-    {
+{
+    "battery": {
         "name": "battery",
         "min_level": 1,
         "damage_low_range": 2,
@@ -8,7 +8,7 @@
         "mp_high_range": 0,
         "prerequisites": []
     },
-    {
+    "razor_blade": {
         "name": "razor blade",
         "min_level": 1,
         "damage_low_range": 4,
@@ -17,7 +17,7 @@
         "mp_high_range": 0,
         "prerequisites": []
     },
-    {
+    "knife": {
         "name": "knife",
         "min_level": 2,
         "damage_low_range": 5,
@@ -26,7 +26,7 @@
         "mp_high_range": 0,
         "prerequisites": []
     },
-    {
+    "shoelace": {
         "name": "shoelace",
         "min_level": 2,
         "damage_low_range": 6,
@@ -35,7 +35,7 @@
         "mp_high_range": 0,
         "prerequisites": []
     },
-    {
+    "lawnmower": {
         "name": "lawnmower",
         "min_level": 2,
         "damage_low_range": 10,
@@ -52,4 +52,4 @@
             }
         ]
     }
-]
+}

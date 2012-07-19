@@ -10,6 +10,8 @@ var nconf = require('nconf');
 var redis = require('redis');
 var db = redis.createClient();
 var game = require('../lib/game');
+var jobs = require('../config/jobs');
+var tools = require('../config/tools');
 
 nconf.argv().env().file({ file: 'test/local-test.json' });
 
@@ -30,31 +32,7 @@ var enemy = {
   xp_high_range: 3
 };
 
-var tools = [
-  {
-    name: 'fist',
-    min_level: 1,
-    damage_low_range: 1,
-    damage_high_range: 3,
-    mp_low_range: 0,
-    mp_high_range: 0,
-    prerequisites: []
-  }
-];
-
-var job = {
-  name: 'Engineer',
-  avatar_alive: "/jobs/engineer-alive.png",
-  avatar_dead: "/jobs/engineer-dead.png",
-  mp_multiplier_low_range: 1,
-  mp_multiplier_high_range: 3,
-  speed_multiplier_low_range: 3,
-  speed_multiplier_high_range: 6,
-  moxie_multiplier_low_range: 6,
-  moxie_multiplier_high_range: 9,
-  min_level_access: 1,
-  prerequisite_job: false
-};
+var job = jobs[Object.keys(jobs)[0]]; // omg getting the first element of a hash.
 
 var req = {
   session: {
@@ -69,7 +47,7 @@ var req = {
   },
   body: {
     enemy: 'Starky',
-    tool: 'fist',
+    tool: 'battery',
     enemy_hp: enemy.hp
   }
 };
