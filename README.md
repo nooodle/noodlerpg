@@ -14,7 +14,7 @@ Install node by using brew or through the website http://nodejs.org/#download
 
 > cd noodlerpg
 
-> cp local.json-dist local.json
+> cp local.json{-dist,}
 
 > npm install
 
