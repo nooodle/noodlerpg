@@ -3,16 +3,16 @@
     "enemies":
     [
         {
-            "name": "Porky",
-            "avatar_alive": "/enemies/porky-alive.png",
-            "avatar_dead": "/enemies/porky-dead.png",
+            "name": "Batty",
+            "avatar_alive": "/enemies/batty-alive.png",
+            "avatar_dead": "/enemies/batty-dead.png",
             "battle_messages":
             [
                 {
-                    "message": "Porky attacks you from behind like a pig!"
+                    "message": "Batty attacks you with webby wings!"
                 },
                 {
-                    "message": "Porky eats bacon in your face!"
+                    "message": "Batty digs his fangs into your neck!"
                 }
             ],
             "hp": 65,
