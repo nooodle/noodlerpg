@@ -40,7 +40,7 @@ block content
     ul
       - for(var name in session.activeTools) {
         - var toolName = session.activeTools[name].name.replace(/\s/, '_');
-        li
+        li(data-tool='#{toolName}')
           img(src='/tools/#{toolName}.png')
           span= session.activeTools[name].name
       - }
@@ -50,7 +50,7 @@ block content
     ul
       - for(var name in session.tools) {
         - var toolName = session.tools[name].name.replace(/\s/, '_');
-        li
+        li(data-tool='#{toolName}')
           img(src='/tools/#{toolName}.png')
           span= session.tools[name].name
       - }

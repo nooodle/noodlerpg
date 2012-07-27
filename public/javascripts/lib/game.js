@@ -90,42 +90,35 @@ define(['jquery'], function ($) {
       if (goldAmountNum >= params.cost && !self.hasClass('disabled')) {
         $.post('/buy', params, function(data) {
           goldAmount.text(data.result.gold);
+          self.removeClass('enabled').addClass('disabled');
         });
       }
     },
     addTool: function(self) {
       if (currentTools.find('li').length < 6) {
         var params = {
-          tool: self.find('span').text()
+          tool: self.data('tool')
         };
 
         $.post('/add_tool', params, function(data) {
           if (data.result.tool) {
-            var toolItem = $('<li><img><span></span></li>');
-            toolItem.find('img').attr('src', '/tools/' + data.result.tool.name.replace(/\s/, '_') + '.png');
-            toolItem.find('span').text(data.result.tool.name);
+            var toolItem = inventory.find('li[data-tool="' + self.data('tool') + '"]');
             currentTools.append(toolItem);
-            inventory.find('span').text(data.result.tool.name).parent().remove();
           };
         });
       }
     },
     removeTool: function(self) {
-      if (currentTools.find('li').length > 1) {
-        var params = {
-          tool: self.find('span').text()
-        };
+      var params = {
+        tool: self.data('tool')
+      };
 
-        $.post('/remove_tool', params, function(data) {
-          if (data.result.tool) {
-            var toolItem = $('<li><img><span></span></li>');
-            toolItem.find('img').attr('src', '/tools/' + data.result.tool.name.replace(/\s/, '_') + '.png');
-            toolItem.find('span').text(data.result.tool.name);
-            currentTools.find('span').text(data.result.tool.name).parent().remove();
-            inventory.append(toolItem);
-          };
-        });
-      }
+      $.post('/remove_tool', params, function(data) {
+        if (data.result.tool) {
+          var toolItem = currentTools.find('li[data-tool="' + self.data('tool') + '"]');
+          inventory.append(toolItem);
+        };
+      });
     }
   };
 

@@ -91,17 +91,6 @@ describe('user', function() {
       });
     });
 
-    it('sets the user tool if correctly defined', function(done) {
-      req.body.tool = 'battery';
-      req.session.tools = tools['battery'];
-      user.addActiveTool(req, db, function(err, tool) {
-        should.exist(tool);
-        tool.name.should.equal('battery');
-        should.exist(req.session.activeTools['battery']);
-        done();
-      });
-    });
-
     it('does not set the user tool if incorrectly defined', function(done) {
       req.body.tool = 'battery_invalid';
       req.session.tools = tools['battery'];
@@ -123,6 +112,30 @@ describe('user', function() {
       user.addActiveTool(req, db, function(err, tool) {
         should.exist(tool);
         tool.should.equal(false);
+        done();
+      });
+    });
+
+    it('removes the active user tool and adds it to the inventory tools if it exists', function(done) {
+      req.body.tool = 'battery';
+      req.session.activeTools = { 'battery': tools['battery'] };
+      req.session.tools = {};
+
+      user.removeActiveTool(req, db, function(err, tool) {
+        should.exist(tool);
+        tool.should.equal(tools['battery']);
+        done();
+      });
+    });
+
+    it('removes the inventory user tool and adds it to the active tools if it exists', function(done) {
+      req.body.tool = 'battery';
+      req.session.activeTools = {};
+      req.session.tools = { 'battery': tools['battery'] };
+
+      user.removeActiveTool(req, db, function(err, tool) {
+        should.exist(tool);
+        tool.should.equal(tools['battery']);
         done();
       });
     });

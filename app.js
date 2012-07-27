@@ -6,6 +6,7 @@ var app = express.createServer();
 var nconf = require('nconf');
 var redis = require('redis');
 var db = redis.createClient();
+var utils = require('./lib/utils');
 var settings = require('./settings')(app, configurations, express);
 
 nconf.argv().env().file({ file: 'local.json' });
@@ -14,8 +15,7 @@ var isLoggedIn = function(req, res, next) {
   if (req.session.email) {
     next();
   } else {
-    err.status = 403;
-    next(new Error('not allowed!'));
+    res.redirect('/');
   }
 };
 
@@ -55,13 +55,21 @@ var hasEnemy = function(req, res, next) {
 
 var resetEnemy = function(req, res, next) {
   if (req.session.enemy) {
-    req.session.enemy = null;
+    req.session.enemy = {};
   }
   next();
 };
 
+var hasActiveTool = function(req, res, next) {
+  if (utils.getObjectSize(req.session.activeTools) > 0) {
+    next();
+  } else {
+    res.redirect('/dashboard');
+  }
+};
+
 // routes
-require("./routes")(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess, hasEnemy, resetEnemy);
+require("./routes")(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess, hasEnemy, resetEnemy, hasActiveTool);
 require('./routes/auth')(app, db, nconf, isLoggedIn);
 
 app.get('/404', function(req, res, next){

@@ -5,7 +5,7 @@ var user = require('../lib/user');
 var config = require('../config/defaults');
 var tools = require('../config/tools');
 
-module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess, hasEnemy, resetEnemy) {
+module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess, hasEnemy, resetEnemy, hasActiveTool) {
   app.get('/', function(req, res) {
     if (req.session.email) {
       res.redirect('/dashboard');
@@ -26,7 +26,10 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
 
   app.post('/add_tool', isLoggedIn, function(req, res) {
     user.addActiveTool(req, db, function(err, tool) {
-      req.session.activeTools[tool.name.replace(/\s/, '_')] = tool;
+      var toolName = tool.name.replace(/\s/, '_');
+
+      delete req.session.tools[toolName];
+      req.session.activeTools[toolName] = tool;
 
       var data = {};
       data.result = {
@@ -39,7 +42,10 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
 
   app.post('/remove_tool', isLoggedIn, function(req, res) {
     user.removeActiveTool(req, db, function(err, tool) {
-      delete req.session.activeTools[tool.name.replace(/\s/, '_')];
+      var toolName = tool.name.replace(/\s/, '_');
+
+      delete req.session.activeTools[toolName];
+      req.session.tools[toolName] = tool;
 
       var data = {};
       data.result = {
@@ -150,7 +156,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
-  app.get('/detail/:level', isLoggedIn, hasJob, sufficientLevelAccess, function(req, res) {
+  app.get('/detail/:level', isLoggedIn, hasJob, sufficientLevelAccess, hasActiveTool, function(req, res) {
     var level = parseInt(req.params.level, 10);
     var config = require('../config/level' + level);
     var enemy = config.enemies[Math.floor(Math.random() * config.enemies.length)];
@@ -166,7 +172,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
-  app.post('/battle', isLoggedIn, hasJob, sufficientLevelAccess, hasEnemy, function(req, res) {
+  app.post('/battle', isLoggedIn, hasJob, sufficientLevelAccess, hasEnemy, hasActiveTool, function(req, res) {
     var level = parseInt(req.body.level, 10);
     var config = require('../config/level' + level);
     var result = {};
