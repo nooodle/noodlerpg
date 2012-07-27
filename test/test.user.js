@@ -28,10 +28,12 @@ var req = {
     job: job,
     level: 1,
     gold: 100,
-    tools: tools,
+    tools: {},
+    activeTools: { 'fist': tools['fist'] },
     hp: 50,
     xp: 1
-  }
+  },
+  body: {}
 };
 
 describe('user', function() {
@@ -70,6 +72,14 @@ describe('user', function() {
       });
     });
 
+    it('sets the user job if incorrectly defined', function(done) {
+      user.setJob('engineer-nonexistent', function(err, job) {
+        should.exist(job);
+        job.name.toLowerCase().should.equal('engineer');
+        done();
+      });
+    });
+
     it('sets the user hp to the default if incorrectly defined', function(done) {
       req.session.hp = 'a';
       user.saveStats(req, db, function(err, userStatSave) {
@@ -81,10 +91,38 @@ describe('user', function() {
       });
     });
 
-    it('sets the user job if incorrectly defined', function(done) {
-      user.setJob('engineer-nonexistent', function(err, job) {
-        should.exist(job);
-        job.name.toLowerCase().should.equal('engineer');
+    it('sets the user tool if correctly defined', function(done) {
+      req.body.tool = 'battery';
+      req.session.tools = tools['battery'];
+      user.addActiveTool(req, db, function(err, tool) {
+        should.exist(tool);
+        tool.name.should.equal('battery');
+        should.exist(req.session.activeTools['battery']);
+        done();
+      });
+    });
+
+    it('does not set the user tool if incorrectly defined', function(done) {
+      req.body.tool = 'battery_invalid';
+      req.session.tools = tools['battery'];
+      user.addActiveTool(req, db, function(err, tool) {
+        should.not.exist(tool);
+        should.not.exist(req.session.activeTools['battery_invalid']);
+        done();
+      });
+    });
+
+    it('does not set the user tool if there are already 6', function(done) {
+      req.body.tool = 'battery';
+      req.session.activeTools = {};
+      req.session.tools = tools['battery'];
+      for (var i = 0; i < 6; i ++) {
+        req.session.activeTools[i] = { i: { name: i } };
+      }
+
+      user.addActiveTool(req, db, function(err, tool) {
+        should.exist(tool);
+        tool.should.equal(false);
         done();
       });
     });

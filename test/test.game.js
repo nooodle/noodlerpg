@@ -40,14 +40,16 @@ var req = {
     job: job,
     level: 1,
     gold: 100,
-    tools: tools,
+    tools: {},
+    activeTools: { 'fist': tools['fist'] },
+    enemy: {},
     hp: 50,
     xp: 1,
     mp: 0
   },
   body: {
     enemy: 'Starky',
-    tool: 'battery',
+    tool: 'fist',
     enemy_hp: enemy.hp
   }
 };
