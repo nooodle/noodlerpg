@@ -34,3 +34,23 @@ block content
         h3 Reset
         span End game (you will lose all stats)
           a(href='/reset', class='button') Reset!
+
+  .tools
+    h2 Current Battle Tools (6 maximum)
+    ul
+      - for(var name in session.activeTools) {
+        - var toolName = session.activeTools[name].name.replace(/\s/, '_');
+        li
+          img(src='/tools/#{toolName}.png')
+          span= session.activeTools[name].name
+      - }
+
+  .inventory
+    h2 Inventory
+    ul
+      - for(var name in session.tools) {
+        - var toolName = session.tools[name].name.replace(/\s/, '_');
+        li
+          img(src='/tools/#{toolName}.png')
+          span= session.tools[name].name
+      - }

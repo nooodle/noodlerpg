@@ -60,7 +60,8 @@ describe('game', function() {
   describe('battle', function() {
     it('fights an enemy and both HPs are less', function(done) {
       req.body.enemy_hp = 20;
-      game.battle(req, enemy, db, function(err, result) {
+      req.session.enemy = enemy;
+      game.battle(req, db, function(err, result) {
         should.exist(result);
         result.player_hp.should.not.equal(50);
         result.enemy_hp.should.not.equal(20);
@@ -71,7 +72,8 @@ describe('game', function() {
     it('fights an enemy and player wins', function(done) {
       enemy.hp = 0;
       req.body.enemy_hp = 0;
-      game.battle(req, enemy, db, function(err, result) {
+      req.session.enemy = enemy;
+      game.battle(req, db, function(err, result) {
         should.exist(result);
         result.gold.should.not.equal(0);
         result.xp.should.not.equal(1);
@@ -83,7 +85,8 @@ describe('game', function() {
     it('fights an enemy and player loses', function(done) {
       enemy.hp = req.body.enemy_hp = 50;
       req.session.hp = 0;
-      game.battle(req, enemy, db, function(err, result) {
+      req.session.enemy = enemy;
+      game.battle(req, db, function(err, result) {
         should.exist(result);
         result.player_hp.should.equal(0);
         result.enemy_hp.should.not.equal(0);

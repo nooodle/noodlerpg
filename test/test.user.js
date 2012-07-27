@@ -63,7 +63,7 @@ describe('user', function() {
     });
 
     it('sets the user job if correctly defined', function(done) {
-      user.setJob('engineer', db, function(err, job) {
+      user.setJob('engineer', function(err, job) {
         should.exist(job);
         job.should.equal(jobs['engineer']);
         done();
@@ -82,7 +82,7 @@ describe('user', function() {
     });
 
     it('sets the user job if incorrectly defined', function(done) {
-      user.setJob('engineer-nonexistent', db, function(err, job) {
+      user.setJob('engineer-nonexistent', function(err, job) {
         should.exist(job);
         job.name.toLowerCase().should.equal('engineer');
         done();

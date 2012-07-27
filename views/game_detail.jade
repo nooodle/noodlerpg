@@ -13,11 +13,11 @@ block content
     a(href='/detail/#{level}', class='fight-again') fight again!
 
     ol.tools(data-level='#{level}')
-      - for(var name in session.tools) {
-        - var toolName = session.tools[name].name.replace(/\s/, '_');
+      - for(var name in session.activeTools) {
+        - var toolName = session.activeTools[name].name.replace(/\s/, '_');
         li(data-tool='#{toolName}')
           img(src='/tools/#{toolName}.png')
-          span= session.tools[name].name
+          span= session.activeTools[name].name
       - }
 
   if session.hp > 0

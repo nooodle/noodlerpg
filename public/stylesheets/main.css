@@ -178,7 +178,8 @@ p.intro, .game h1, .dashboard h1, .store h1 {
     position: relative;
 }
 
-.store .items li span, .detail .tools li span {
+.store .items li span, .detail .tools li span,
+.dashboard .tools li span, .dashboard .inventory li span {
     display: block;
     font-family: 'LeagueGothicRegular';
     font-size: 14px;
@@ -327,16 +328,22 @@ p.intro, .game h1, .dashboard h1, .store h1 {
     background-image: url('/scenes/dashboard.jpg');
 }
 
-.dashboard .stats {
+.dashboard .stats, .dashboard .tools, .dashboard .inventory {
     position: absolute;
+    background-image: url('/misc/stats-dash.png');
+    box-shadow: inset #000 1px 1px 5px;
     color: #eee;
-    left: 50px;
-    top: 105px;
+    left: 10px;
     font-size: 18px;
     width: 480px;
-    height: 445px;
     overflow: auto;
     text-shadow: #000 1px 1px 1px;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.dashboard .stats {
+    top: 55px;
 }
 
 .stats li {
@@ -346,6 +353,34 @@ p.intro, .game h1, .dashboard h1, .store h1 {
 .stats li h3 {
     float: left;
     width: 110px;
+}
+
+.dashboard .tools {
+    top: 350px;
+}
+
+.dashboard .tools li {
+    float: left;
+    margin: 15px 12px 5px 0px;
+}
+
+.dashboard .inventory h2 {
+    margin-bottom: 10px;
+}
+
+.dashboard .inventory {
+    top: 55px;
+    left: 565px;
+    text-align: center;
+    width: 170px;
+    padding-left: 25px;
+    height: 401px;
+    overflow: auto;
+}
+
+.dashboard .inventory li {
+    float: left;
+    margin: 10px 10px 30px 10px;
 }
 
 a.button {
@@ -432,14 +467,14 @@ img.enemy, img.player {
 
 img.enemy {
     position: absolute;
-    top: 130px;
-    left: 230px;
+    top: 180px;
+    left: 280px;
 }
 
 img.player {
     position: absolute;
-    top: 130px;
-    left: 10px;
+    top: 180px;
+    left: 20px;
 }
 
 img.enemy.dead, img.player.dead {
@@ -449,8 +484,8 @@ img.enemy.dead, img.player.dead {
 
 img.action {
     position: absolute;
-    top: 40px;
-    left: 30px;
+    top: 100px;
+    left: 65px;
     display: none;
 }
 
@@ -460,8 +495,8 @@ ol.tools {
     display: block;
     border-radius: 8px;
     position: absolute;
-    top: 400px;
-    left: 10px;
+    top: 460px;
+    left: 20px;
     box-shadow: inset #000 1px 1px 5px;
     border: 1px solid #111;
 }
@@ -479,8 +514,26 @@ ol.tools li, .store .items li {
     height: 60px;
 }
 
+.dashboard .inventory ul {
+    display: block;
+    float: left;
+    width: 180px;
+}
+
+.dashboard .tools li, .dashboard .inventory li {
+    border: 4px solid #fff;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+
 .detail ol.tools li span {
     text-shadow: #eee 0px 0px 3px;
+}
+
+.dashboard .tools li span, .dashboard .inventory li span {
+    text-shadow: none;
 }
 
 .detail ol.tools li:hover span {
@@ -592,4 +645,12 @@ a.fight-again:hover {
 
 .level4.detail .wrapper {
     background-image: url('/locations/level4-detail.jpg');
+}
+
+.level5 .wrapper {
+    background-image: url('/locations/level5-preview.jpg');
+}
+
+.level5.detail .wrapper {
+    background-image: url('/locations/level5-detail.jpg');
 }

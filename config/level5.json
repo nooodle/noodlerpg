@@ -1,0 +1,27 @@
+{
+    "location": "Exploding Fireballs",
+    "enemies":
+    [
+        {
+            "name": "Siree",
+            "avatar_alive": "/enemies/siree-alive.png",
+            "avatar_dead": "/enemies/siree-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Siree sings a terrible pop song in a high pitch!"
+                },
+                {
+                    "message": "Siree gives you the worst tinnitus!"
+                }
+            ],
+            "hp": 140,
+            "damage_low_range": 45,
+            "damage_high_range": 60,
+            "gold_low_range": 68,
+            "gold_high_range": 85,
+            "xp_low_range": 22,
+            "xp_high_range": 26
+        }
+    ]
+}

@@ -4,7 +4,6 @@
     "authPort": 3000,
     "authUrl": "https://browserid.org",
     "session_secret": "secret",
-    "session_cookie": "session_your_cookie_name",
     "redis_dev": 1,
     "redis_test": 2,
     "redis_prod": 0

@@ -48,10 +48,24 @@ define(['jquery', 'game'],
       game.refuel();
     });
 
-    // Purchasing items
+    // Purchasing tools
     var toolItems = $('ul.items');
 
     toolItems.on('click', 'li', function() {
       game.buy($(this));
+    });
+
+    // Adding tools
+    var inventory = $('div.inventory ul');
+
+    inventory.on('click', 'li', function() {
+      game.addTool($(this));
+    });
+
+    // Removing tools
+    var activeTools = $('div.tools ul');
+
+    activeTools.on('click', 'li', function() {
+      game.removeTool($(this));
     });
 });

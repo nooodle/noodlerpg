@@ -21,7 +21,7 @@ module.exports = function(app, db, nconf, isLoggedIn) {
 
   // Logout
   app.get('/logout', isLoggedIn, function(req, res) {
-    req.session.reset();
-    res.redirect('/?logged_out=1', 303);
+    req.session.destroy();
+    res.redirect('/', 303);
   });
 };

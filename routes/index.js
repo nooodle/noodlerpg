@@ -24,6 +24,32 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
+  app.post('/add_tool', isLoggedIn, function(req, res) {
+    user.addActiveTool(req, db, function(err, tool) {
+      req.session.activeTools[tool.name.replace(/\s/, '_')] = tool;
+
+      var data = {};
+      data.result = {
+        tool: tool
+      };
+
+      res.json(data);
+    });
+  });
+
+  app.post('/remove_tool', isLoggedIn, function(req, res) {
+    user.removeActiveTool(req, db, function(err, tool) {
+      delete req.session.activeTools[tool.name.replace(/\s/, '_')];
+
+      var data = {};
+      data.result = {
+        tool: tool
+      };
+
+      res.json(data);
+    });
+  });
+
   app.get('/reset', isLoggedIn, function(req, res) {
     user.resetStats(req, db, function(err, user) {
       res.redirect('/logout', 303);
@@ -74,7 +100,6 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
-  // This is temporary until we actually have store functionality
   app.get('/refuel', isLoggedIn, resetEnemy, function(req, res) {
     if (req.session.gold >= 10) {
       var data = { result: {} };
@@ -105,7 +130,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.post('/job', isLoggedIn, hasNoJob, resetEnemy, function(req, res) {
-    user.setJob(req.body.job, db, function(err, job) {
+    user.setJob(req.body.job, function(err, job) {
       req.session.job = job;
 
       user.saveStats(req, db, function(err, user) {
@@ -146,7 +171,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     var config = require('../config/level' + level);
     var result = {};
 
-    game.battle(req, req.session.enemy, db, function(err, result) {
+    game.battle(req, db, function(err, result) {
       res.json({
         result: result
       });

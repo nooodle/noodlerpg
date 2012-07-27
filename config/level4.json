@@ -3,16 +3,16 @@
     "enemies":
     [
         {
-            "name": "Siren",
-            "avatar_alive": "/enemies/siren-alive.png",
-            "avatar_dead": "/enemies/siren-dead.png",
+            "name": "Siree",
+            "avatar_alive": "/enemies/siree-alive.png",
+            "avatar_dead": "/enemies/siree-dead.png",
             "battle_messages":
             [
                 {
-                    "message": "Siren sings a terrible pop song in a high pitch!"
+                    "message": "Siree sings a terrible pop song in a high pitch!"
                 },
                 {
-                    "message": "Siren gives you the worst tinnitus!"
+                    "message": "Siree gives you the worst tinnitus!"
                 }
             ],
             "hp": 98,
@@ -22,6 +22,27 @@
             "gold_high_range": 63,
             "xp_low_range": 12,
             "xp_high_range": 16
+        },
+        {
+            "name": "Spidee",
+            "avatar_alive": "/enemies/spidee-alive.png",
+            "avatar_dead": "/enemies/spidee-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Spidee whips up a sticky web of gross!"
+                },
+                {
+                    "message": "Spidee tricks you into an invisible wall of web!"
+                }
+            ],
+            "hp": 115,
+            "damage_low_range": 35,
+            "damage_high_range": 46,
+            "gold_low_range": 53,
+            "gold_high_range": 70,
+            "xp_low_range": 15,
+            "xp_high_range": 18
         }
     ]
 }

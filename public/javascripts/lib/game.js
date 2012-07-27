@@ -9,6 +9,8 @@ define(['jquery'], function ($) {
   var message = $('.battle-message');
   var fightAgain = $('.fight-again');
   var goldAmount = $('.stats .gold');
+  var currentTools = $('.dashboard .tools ul');
+  var inventory = $('.dashboard .inventory ul');
 
   var updateStats = function(options) {
     enemy.data('hp', options.enemy_hp);
@@ -88,6 +90,40 @@ define(['jquery'], function ($) {
       if (goldAmountNum >= params.cost && !self.hasClass('disabled')) {
         $.post('/buy', params, function(data) {
           goldAmount.text(data.result.gold);
+        });
+      }
+    },
+    addTool: function(self) {
+      if (currentTools.find('li').length < 6) {
+        var params = {
+          tool: self.find('span').text()
+        };
+
+        $.post('/add_tool', params, function(data) {
+          if (data.result.tool) {
+            var toolItem = $('<li><img><span></span></li>');
+            toolItem.find('img').attr('src', '/tools/' + data.result.tool.name.replace(/\s/, '_') + '.png');
+            toolItem.find('span').text(data.result.tool.name);
+            currentTools.append(toolItem);
+            inventory.find('span').text(data.result.tool.name).parent().remove();
+          };
+        });
+      }
+    },
+    removeTool: function(self) {
+      if (currentTools.find('li').length > 1) {
+        var params = {
+          tool: self.find('span').text()
+        };
+
+        $.post('/remove_tool', params, function(data) {
+          if (data.result.tool) {
+            var toolItem = $('<li><img><span></span></li>');
+            toolItem.find('img').attr('src', '/tools/' + data.result.tool.name.replace(/\s/, '_') + '.png');
+            toolItem.find('span').text(data.result.tool.name);
+            currentTools.find('span').text(data.result.tool.name).parent().remove();
+            inventory.append(toolItem);
+          };
         });
       }
     }
