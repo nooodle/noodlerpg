@@ -10,7 +10,7 @@ block content
       li#level
         h3 Level
         span= session.level
-        if session.job
+        if hasJob
           a(href='/universe', class='button') Explore!
       li#hp
         h3 HP

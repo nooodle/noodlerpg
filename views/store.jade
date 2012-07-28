@@ -21,20 +21,21 @@ block content
 
   ul.items
     - for (var name in tools) {
-      - var enabled = 'enabled';
-      - if (tools[name].cost > session.gold || session.tools[name] || session.activeTools[name]) {
-        enabled = 'disabled';
-      - } else {
-        - if (tools[name].prerequisites.length > 0) {
-          - for (var i = 0; i < tools[name].prerequisites.length; i ++) {
-            - if (!session.tools[tools[name].prerequisites[i]] && !session.activeTools[tools[name].prerequisites[i]]) {
-              - enabled = 'disabled';
-              - break;
+      if name !== 'fist'
+        - var enabled = 'enabled';
+        - if (tools[name].cost > session.gold || session.tools[name] || session.activeTools[name]) {
+          enabled = 'disabled';
+        - } else {
+          - if (tools[name].prerequisites.length > 0) {
+            - for (var i = 0; i < tools[name].prerequisites.length; i ++) {
+              - if (!session.tools[tools[name].prerequisites[i]] && !session.activeTools[tools[name].prerequisites[i]]) {
+                - enabled = 'disabled';
+                - break;
+              - }
             - }
           - }
         - }
-      - }
-      mixin toolList(tools[name], enabled)
+        mixin toolList(tools[name], enabled)
     - }
 
   ul.stats

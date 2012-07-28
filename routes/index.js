@@ -2,6 +2,7 @@
 
 var game = require('../lib/game');
 var user = require('../lib/user');
+var utils = require('../lib/utils');
 var config = require('../config/defaults');
 var tools = require('../config/tools');
 
@@ -17,9 +18,15 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.get('/dashboard', isLoggedIn, resetEnemy, function(req, res) {
+    var hasJob = false;
+    if (utils.getObjectSize(req.session.job) > 0) {
+      hasJob = true;
+    }
+
     res.render('game_dashboard', {
       pageType: 'dashboard',
       level: req.session.level,
+      hasJob: hasJob,
       title: 'Dashboard'
     });
   });
@@ -63,20 +70,17 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.get('/store', isLoggedIn, resetEnemy, function(req, res) {
-    var saleTools = tools;
-    delete saleTools['fist'];
-
     res.render('store', {
       pageType: 'store',
       level: req.session.level,
-      tools: saleTools,
+      tools: tools,
       title: 'Noodle Goods Shoppe'
     });
   });
 
   app.post('/buy', isLoggedIn, resetEnemy, function(req, res) {
     if (!req.session.tools[req.body.tool]) {
-      req.session.gold -= parseInt(req.body.cost, 10);
+      req.session.gold = parseInt(req.session.gold, 10) + parseInt(req.body.cost, 10);
       req.session.tools[req.body.tool] = tools[req.body.tool];
     }
 
@@ -107,10 +111,12 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.get('/refuel', isLoggedIn, resetEnemy, function(req, res) {
-    if (req.session.gold >= 10) {
+    var gold = parseInt(req.session.gold, 10);
+
+    if (gold >= 10) {
       var data = { result: {} };
-      req.session.hp += 15;
-      req.session.gold -= 10;
+      req.session.hp = parseInt(req.session.hp, 10) + 15;
+      req.session.gold = gold - 10;
 
       user.saveStats(req, db, function(err, user) {
         if (err) {
