@@ -11,6 +11,7 @@ define(['jquery'], function ($) {
   var goldAmount = $('.stats .gold');
   var currentTools = $('.dashboard .tools ul');
   var inventory = $('.dashboard .inventory ul');
+  var activeStoreItems = $('.store .items li.enabled');
 
   var updateStats = function(options) {
     enemy.data('hp', options.enemy_hp);
@@ -91,6 +92,12 @@ define(['jquery'], function ($) {
         $.post('/buy', params, function(data) {
           goldAmount.text(data.result.gold);
           self.removeClass('enabled').addClass('disabled');
+          activeStoreItems.each(function(idx, item) {
+            var item = $(this);
+            if (item.data('cost') > data.result.gold) {
+              item.removeClass('enabled').addClass('disabled');
+            }
+          });
         });
       }
     },

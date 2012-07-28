@@ -3,16 +3,16 @@
     "enemies":
     [
         {
-            "name": "Siree",
-            "avatar_alive": "/enemies/siree-alive.png",
-            "avatar_dead": "/enemies/siree-dead.png",
+            "name": "Waxy",
+            "avatar_alive": "/enemies/waxy-alive.png",
+            "avatar_dead": "/enemies/waxy-dead.png",
             "battle_messages":
             [
                 {
-                    "message": "Siree sings a terrible pop song in a high pitch!"
+                    "message": "Waxy splatters hot wax all over your face!"
                 },
                 {
-                    "message": "Siree gives you the worst tinnitus!"
+                    "message": "Wax makes a large flame burn closer!"
                 }
             ],
             "hp": 140,
@@ -22,6 +22,27 @@
             "gold_high_range": 65,
             "xp_low_range": 22,
             "xp_high_range": 26
+        },
+        {
+            "name": "Schoenenbot",
+            "avatar_alive": "/enemies/schoenenbot-alive.png",
+            "avatar_dead": "/enemies/schoenenbot-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Schoenenbot translates Dutch in your English!"
+                },
+                {
+                    "message": "Schoenenbot rides a bike on your face!"
+                }
+            ],
+            "hp": 155,
+            "damage_low_range": 57,
+            "damage_high_range": 75,
+            "gold_low_range": 65,
+            "gold_high_range": 72,
+            "xp_low_range": 24,
+            "xp_high_range": 28
         }
     ]
 }

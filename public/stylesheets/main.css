@@ -86,6 +86,11 @@ body {
     width: 780px;
 }
 
+a {
+    outline: none;
+    text-decoration: none;
+}
+
 #header {
     clear: both;
     float: left;
@@ -386,7 +391,6 @@ p.intro, .game h1, .dashboard h1, .store h1 {
 
 a.button {
     border-radius: 3px;
-    text-decoration: none;
     color: #fff;
     font-size: 18px;
     font-family: 'LeagueGothicRegular';
@@ -555,7 +559,6 @@ a.fight-again {
     background-color: #fff;
     box-shadow: #111 3px 3px 1px;
     padding: 3px 5px 3px 5px;
-    text-decoration: none;
     color: #111;
 }
 
@@ -587,13 +590,10 @@ a.fight-again:hover {
     width: 70px;
     height: 70px;
     box-shadow: inset #444 0px 0px 30px;
-    text-decoration: none;
-    outline: none;
 }
 
 .universe .levels a span {
     color: #eee;
-    text-decoration: none;
     display: none;
     font-size: 12px;
     background-color: #111;

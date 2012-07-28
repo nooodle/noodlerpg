@@ -1,7 +1,7 @@
 extend layout
 
 mixin toolList(tool, enabled)
-  li(class='#{enabled}')
+  li(class='#{enabled}', data-cost='#{tool.cost}')
     img(src='/tools/#{name}.png')
     span.cost= tool.cost
     span.tool-type(data-key='#{tool.name.toLowerCase().replace(/\s/, '_')}')= tool.name
