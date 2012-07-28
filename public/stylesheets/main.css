@@ -226,7 +226,7 @@ p.intro, .game h1, .dashboard h1, .store h1 {
     float: left;
     position: absolute;
     margin-top: 10px;
-    margin-left: -20px;
+    margin-left: -10px;
     z-index: 2;
 }
 

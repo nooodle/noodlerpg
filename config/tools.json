@@ -16,7 +16,7 @@
         "damage_high_range": 6,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 70,
+        "cost": 100,
         "prerequisites": []
     },
     "razor_blade": {
@@ -26,7 +26,7 @@
         "damage_high_range": 8,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 100,
+        "cost": 140,
         "prerequisites": []
     },
     "knife": {
@@ -36,7 +36,7 @@
         "damage_high_range": 10,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 130,
+        "cost": 170,
         "prerequisites": []
     },
     "shoelace": {
@@ -46,7 +46,7 @@
         "damage_high_range": 11,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 185,
+        "cost": 225,
         "prerequisites": []
     },
     "lawnmower": {
@@ -56,11 +56,25 @@
         "damage_high_range": 14,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 330,
+        "cost": 450,
         "prerequisites":
         [
             "battery",
             "razor_blade"
+        ]
+    },
+    "laser": {
+        "name": "laser",
+        "min_level": 5,
+        "damage_low_range": 20,
+        "damage_high_range": 37,
+        "mp_low_range": 3,
+        "mp_high_range": 8,
+        "cost": 1050,
+        "prerequisites":
+        [
+            "battery",
+            "lawnmower"
         ]
     }
 }

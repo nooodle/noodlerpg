@@ -5,11 +5,11 @@ mixin toolList(tool, enabled)
     img(src='/tools/#{name}.png')
     span.cost= tool.cost
     span.tool-type(data-key='#{tool.name.toLowerCase().replace(/\s/, '_')}')= tool.name
-
-    if tool.prerequisites.length > 0
-      .requirements
-        = 'Needs the following: '
-        ol
+    .requirements
+      = 'Needs the following: '
+      ol
+        li= '-level ' + tool.min_level
+        if tool.prerequisites.length > 0
           - for (var item in tool.prerequisites) {
             li
               -
@@ -23,7 +23,7 @@ block content
     - for (var name in tools) {
       if name !== 'fist'
         - var enabled = 'enabled';
-        - if (tools[name].cost > session.gold || session.tools[name] || session.activeTools[name]) {
+        - if (session.level < tools[name].min_level || tools[name].cost > session.gold || session.tools[name] || session.activeTools[name]) {
           enabled = 'disabled';
         - } else {
           - if (tools[name].prerequisites.length > 0) {

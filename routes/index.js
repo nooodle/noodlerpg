@@ -79,8 +79,12 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.post('/buy', isLoggedIn, resetEnemy, function(req, res) {
-    if (!req.session.tools[req.body.tool]) {
-      req.session.gold = parseInt(req.session.gold, 10) + parseInt(req.body.cost, 10);
+    if (!req.session.activeTools[req.body.tool] &&
+      !req.session.tools[req.body.tool] &&
+      parseInt(req.session.gold, 10) >= tools[req.body.tool].cost &&
+      parseInt(req.session.level, 10) >= tools[req.body.tool].min_level) {
+
+      req.session.gold = parseInt(req.session.gold, 10) - parseInt(req.body.cost, 10);
       req.session.tools[req.body.tool] = tools[req.body.tool];
     }
 
