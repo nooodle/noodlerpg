@@ -172,6 +172,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     var enemy = config.enemies[Math.floor(Math.random() * config.enemies.length)];
 
     req.session.enemy = enemy;
+    req.session.last_level_played = level;
 
     res.render('game_detail', {
       pageType: 'game detail level' + level,
@@ -183,7 +184,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.post('/battle', isLoggedIn, hasJob, sufficientLevelAccess, hasEnemy, hasActiveTool, function(req, res) {
-    var level = parseInt(req.body.level, 10);
+    var level = parseInt(req.session.last_level_played, 10);
     var config = require('../config/level' + level);
     var result = {};
 

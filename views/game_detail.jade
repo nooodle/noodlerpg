@@ -4,10 +4,10 @@ block content
   h1= title
 
   if session.hp < 1
-    img(src='#{session.job.avatar_dead}', class='battle dead player', data-hp='#{session.hp}')
+    img(src='#{session.job.avatar_dead}', class='battle dead player')
   else
-    img(src='#{session.job.avatar_alive}', class='battle alive player', data-hp='#{session.hp}')
-    img(src='#{enemy.avatar_alive}', class='battle alive enemy', data-enemy='#{enemy.name}', data-hp='#{enemy.hp}')
+    img(src='#{session.job.avatar_alive}', class='battle alive player')
+    img(src='#{enemy.avatar_alive}', class='battle alive enemy')
     img(src='/actions/pow.png', class='action')
 
     a(href='/detail/#{level}', class='fight-again') fight again!

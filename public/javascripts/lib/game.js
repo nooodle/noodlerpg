@@ -34,8 +34,6 @@ define(['jquery'], function ($) {
       if (enemy.hasClass('alive') && player.hasClass('alive')) {
         var params = {
           level: self.parent().data('level'),
-          enemy: enemy.data('enemy'),
-          enemy_hp: enemy.data('hp'),
           tool: self.data('tool')
         };
 

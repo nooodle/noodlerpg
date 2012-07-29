@@ -12,6 +12,8 @@ block content
         span= session.level
         if hasJob
           a(href='/universe', class='button') Explore!
+        if session.last_level_played
+          a(href='/detail/#{session.last_level_played}', class='button') Last Location
       li#hp
         h3 HP
         span= session.hp
