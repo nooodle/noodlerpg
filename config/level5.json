@@ -15,9 +15,9 @@
                     "message": "Wax makes a large flame burn closer!"
                 }
             ],
-            "hp": 140,
-            "damage_low_range": 45,
-            "damage_high_range": 60,
+            "hp": 190,
+            "damage_low_range": 85,
+            "damage_high_range": 98,
             "gold_low_range": 58,
             "gold_high_range": 65,
             "xp_low_range": 22,
@@ -36,9 +36,9 @@
                     "message": "Schoenenbot rides a bike on your face!"
                 }
             ],
-            "hp": 155,
-            "damage_low_range": 57,
-            "damage_high_range": 75,
+            "hp": 195,
+            "damage_low_range": 87,
+            "damage_high_range": 95,
             "gold_low_range": 65,
             "gold_high_range": 72,
             "xp_low_range": 24,

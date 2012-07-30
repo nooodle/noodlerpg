@@ -1,0 +1,48 @@
+{
+    "location": "Green Moon Bay",
+    "enemies":
+    [
+        {
+            "name": "Boogy",
+            "avatar_alive": "/enemies/boogy-alive.png",
+            "avatar_dead": "/enemies/boogy-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Boogy sneezes on you! Gross."
+                },
+                {
+                    "message": "Boogy rolls up into a ball and flies towards your eye"
+                }
+            ],
+            "hp": 250,
+            "damage_low_range": 135,
+            "damage_high_range": 149,
+            "gold_low_range": 69,
+            "gold_high_range": 75,
+            "xp_low_range": 25,
+            "xp_high_range": 29
+        },
+        {
+            "name": "Baguetto",
+            "avatar_alive": "/enemies/baguetto-alive.png",
+            "avatar_dead": "/enemies/baguetto-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Baguetto bakes up a storm in your yeast!"
+                },
+                {
+                    "message": "Baguetto elongates itself into supersize!"
+                }
+            ],
+            "hp": 275,
+            "damage_low_range": 150,
+            "damage_high_range": 165,
+            "gold_low_range": 77,
+            "gold_high_range": 85,
+            "xp_low_range": 27,
+            "xp_high_range": 33
+        }
+    ]
+}

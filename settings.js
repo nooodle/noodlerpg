@@ -1,21 +1,24 @@
 // Module dependencies.
 module.exports = function(app, configurations, express) {
-  var clientSessions = require('client-sessions');
   var nconf = require('nconf');
+  var MemoryStore = require('connect').session.MemoryStore;
 
   nconf.argv().env().file({ file: 'local.json' });
 
   // Configuration
 
   app.configure(function(){
+    app.use(express.cookieParser());
+    app.use(express.session({
+      secret: nconf.get('session_secret'),
+      store: new MemoryStore({ reapInterval: 60000 * 10 })
+    }));
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.set('view options', { layout: false });
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.static(__dirname + '/public'));
-    app.use(express.cookieParser());
-    app.use(express.session({ secret: nconf.get('session_secret') }));
     app.use(app.router);
     app.use(function(req, res, next) {
       res.status(403);
@@ -38,16 +41,16 @@ module.exports = function(app, configurations, express) {
   });
 
   app.configure('development', function() {
-    app.set('redisnoodle', nconf.get('redis_dev'));
+    app.set('redisnoodlerpg', nconf.get('redis_dev'));
   });
 
   app.configure('test', function() {
-    app.set('redisnoodle', nconf.get('redis_test'));
+    app.set('redisnoodlerpg', nconf.get('redis_test'));
   });
 
   app.configure('production', function() {
     app.use(express.errorHandler());
-    app.set('redisnoodle', nconf.get('redis_prod'));
+    app.set('redisnoodlerpg', nconf.get('redis_prod'));
   });
 
   app.dynamicHelpers({

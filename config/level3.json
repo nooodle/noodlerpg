@@ -15,9 +15,9 @@
                     "message": "Batty digs his fangs into your neck!"
                 }
             ],
-            "hp": 72,
-            "damage_low_range": 14,
-            "damage_high_range": 23,
+            "hp": 82,
+            "damage_low_range": 38,
+            "damage_high_range": 47,
             "gold_low_range": 35,
             "gold_high_range": 48,
             "xp_low_range": 6,
@@ -36,9 +36,9 @@
                     "message": "Sandy splits into two and attacks you from various angles!"
                 }
             ],
-            "hp": 75,
-            "damage_low_range": 16,
-            "damage_high_range": 26,
+            "hp": 85,
+            "damage_low_range": 39,
+            "damage_high_range": 50,
             "gold_low_range": 38,
             "gold_high_range": 50,
             "xp_low_range": 8,

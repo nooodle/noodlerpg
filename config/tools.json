@@ -27,7 +27,7 @@
         "damage_high_range": 8,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 140,
+        "cost": 170,
         "prerequisites": []
     },
     "knife": {
@@ -37,7 +37,7 @@
         "damage_high_range": 10,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 170,
+        "cost": 200,
         "prerequisites": []
     },
     "shoelace": {
@@ -47,7 +47,7 @@
         "damage_high_range": 11,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 225,
+        "cost": 350,
         "prerequisites": []
     },
     "lawnmower": {
@@ -57,7 +57,7 @@
         "damage_high_range": 14,
         "mp_low_range": 0,
         "mp_high_range": 0,
-        "cost": 450,
+        "cost": 650,
         "prerequisites":
         [
             "battery",
@@ -71,7 +71,7 @@
         "damage_high_range": 37,
         "mp_low_range": 3,
         "mp_high_range": 8,
-        "cost": 1050,
+        "cost": 1250,
         "prerequisites":
         [
             "battery",
