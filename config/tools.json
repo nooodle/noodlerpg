@@ -50,9 +50,29 @@
         "cost": 350,
         "prerequisites": []
     },
+    "powder": {
+        "name": "powder",
+        "min_level": 2,
+        "damage_low_range": 5,
+        "damage_high_range": 10,
+        "mp_low_range": 2,
+        "mp_high_range": 4,
+        "cost": 380,
+        "prerequisites": []
+    },
+    "acid": {
+        "name": "acid",
+        "min_level": 3,
+        "damage_low_range": 8,
+        "damage_high_range": 12,
+        "mp_low_range": 1,
+        "mp_high_range": 3,
+        "cost": 480,
+        "prerequisites": []
+    },
     "lawnmower": {
         "name": "lawnmower",
-        "min_level": 3,
+        "min_level": 4,
         "damage_low_range": 10,
         "damage_high_range": 14,
         "mp_low_range": 0,
@@ -76,6 +96,35 @@
         [
             "battery",
             "lawnmower"
+        ]
+    },
+    "machine_gun": {
+        "name": "machine gun",
+        "min_level": 6,
+        "damage_low_range": 50,
+        "damage_high_range": 68,
+        "mp_low_range": 0,
+        "mp_high_range": 0,
+        "cost": 3250,
+        "prerequisites":
+        [
+            "battery",
+            "laser"
+        ]
+    },
+    "poison_powder": {
+        "name": "poison powder",
+        "min_level": 7,
+        "damage_low_range": 100,
+        "damage_high_range": 120,
+        "mp_low_range": 8,
+        "mp_high_range": 15,
+        "cost": 7500,
+        "prerequisites":
+        [
+            "powder",
+            "acid",
+            "laser"
         ]
     }
 }

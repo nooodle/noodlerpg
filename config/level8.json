@@ -1,0 +1,48 @@
+{
+    "location": "Ocean Planet",
+    "enemies":
+    [
+        {
+            "name": "Steaky",
+            "avatar_alive": "/enemies/steaky-alive.png",
+            "avatar_dead": "/enemies/steaky-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Steaky slathers his rawness on you!"
+                },
+                {
+                    "message": "Steaky whips hot charcoal in your direction!"
+                }
+            ],
+            "hp": 650,
+            "damage_low_range": 215,
+            "damage_high_range": 239,
+            "gold_low_range": 100,
+            "gold_high_range": 121,
+            "xp_low_range": 30,
+            "xp_high_range": 35
+        },
+        {
+            "name": "Pinny",
+            "avatar_alive": "/enemies/pinny-alive.png",
+            "avatar_dead": "/enemies/pinny-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Pinny tears your soul apart!"
+                },
+                {
+                    "message": "Pinny moves a box around and chains fly towards you!"
+                }
+            ],
+            "hp": 675,
+            "damage_low_range": 220,
+            "damage_high_range": 245,
+            "gold_low_range": 95,
+            "gold_high_range": 115,
+            "xp_low_range": 33,
+            "xp_high_range": 37
+        }
+    ]
+}

@@ -43,6 +43,27 @@
             "gold_high_range": 85,
             "xp_low_range": 27,
             "xp_high_range": 33
+        },
+        {
+            "name": "Bossy Pinata",
+            "avatar_alive": "/enemies/bossy-pinata-alive.png",
+            "avatar_dead": "/enemies/bossy-pinata-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Bossy Pinata comes after you with a bat!"
+                },
+                {
+                    "message": "Bossy Pinata injures you with a pile of candy!"
+                }
+            ],
+            "hp": 875,
+            "damage_low_range": 190,
+            "damage_high_range": 215,
+            "gold_low_range": 120,
+            "gold_high_range": 150,
+            "xp_low_range": 40,
+            "xp_high_range": 50
         }
     ]
 }
