@@ -20,8 +20,8 @@
             "damage_high_range": 88,
             "gold_low_range": 39,
             "gold_high_range": 53,
-            "xp_low_range": 12,
-            "xp_high_range": 16
+            "xp_low_range": 6,
+            "xp_high_range": 9
         },
         {
             "name": "Spidee",
@@ -41,8 +41,8 @@
             "damage_high_range": 81,
             "gold_low_range": 43,
             "gold_high_range": 60,
-            "xp_low_range": 15,
-            "xp_high_range": 18
+            "xp_low_range": 7,
+            "xp_high_range": 10
         }
     ]
 }

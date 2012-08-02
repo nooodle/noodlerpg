@@ -15,13 +15,13 @@
                     "message": "Steaky whips hot charcoal in your direction!"
                 }
             ],
-            "hp": 650,
+            "hp": 1950,
             "damage_low_range": 215,
             "damage_high_range": 239,
             "gold_low_range": 100,
             "gold_high_range": 121,
-            "xp_low_range": 30,
-            "xp_high_range": 35
+            "xp_low_range": 18,
+            "xp_high_range": 22
         },
         {
             "name": "Pinny",
@@ -36,13 +36,13 @@
                     "message": "Pinny moves a box around and chains fly towards you!"
                 }
             ],
-            "hp": 675,
+            "hp": 1975,
             "damage_low_range": 220,
             "damage_high_range": 245,
             "gold_low_range": 95,
             "gold_high_range": 115,
-            "xp_low_range": 33,
-            "xp_high_range": 37
+            "xp_low_range": 19,
+            "xp_high_range": 23
         }
     ]
 }

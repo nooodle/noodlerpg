@@ -660,3 +660,19 @@ a.fight-again:hover {
 .level5.detail .wrapper {
     background-image: url('/locations/level5-detail.jpg');
 }
+
+.level6 .wrapper {
+    background-image: url('/locations/level6-preview.jpg');
+}
+
+.level6.detail .wrapper {
+    background-image: url('/locations/level6-detail.jpg');
+}
+
+.level7 .wrapper {
+    background-image: url('/locations/level7-preview.jpg');
+}
+
+.level7.detail .wrapper {
+    background-image: url('/locations/level7-detail.jpg');
+}
