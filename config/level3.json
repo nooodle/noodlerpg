@@ -20,8 +20,8 @@
             "damage_high_range": 47,
             "gold_low_range": 35,
             "gold_high_range": 48,
-            "xp_low_range": 4,
-            "xp_high_range": 7
+            "xp_low_range": 1,
+            "xp_high_range": 6
         },
         {
             "name": "Sandy",
@@ -41,8 +41,8 @@
             "damage_high_range": 50,
             "gold_low_range": 38,
             "gold_high_range": 50,
-            "xp_low_range": 5,
-            "xp_high_range": 8
+            "xp_low_range": 1,
+            "xp_high_range": 6
         }
     ]
 }

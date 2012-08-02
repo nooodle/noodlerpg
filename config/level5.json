@@ -20,8 +20,8 @@
             "damage_high_range": 98,
             "gold_low_range": 58,
             "gold_high_range": 65,
-            "xp_low_range": 10,
-            "xp_high_range": 13
+            "xp_low_range": 1,
+            "xp_high_range": 9
         },
         {
             "name": "Schoenenbot",
@@ -41,8 +41,8 @@
             "damage_high_range": 95,
             "gold_low_range": 65,
             "gold_high_range": 72,
-            "xp_low_range": 11,
-            "xp_high_range": 14
+            "xp_low_range": 1,
+            "xp_high_range": 9
         }
     ]
 }

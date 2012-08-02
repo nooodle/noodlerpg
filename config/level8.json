@@ -20,8 +20,8 @@
             "damage_high_range": 239,
             "gold_low_range": 100,
             "gold_high_range": 121,
-            "xp_low_range": 18,
-            "xp_high_range": 22
+            "xp_low_range": 1,
+            "xp_high_range": 17
         },
         {
             "name": "Pinny",
@@ -41,8 +41,8 @@
             "damage_high_range": 245,
             "gold_low_range": 95,
             "gold_high_range": 115,
-            "xp_low_range": 19,
-            "xp_high_range": 23
+            "xp_low_range": 1,
+            "xp_high_range": 17
         }
     ]
 }
