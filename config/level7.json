@@ -43,6 +43,28 @@
             "gold_high_range": 115,
             "xp_low_range": 1,
             "xp_high_range": 14
+        },
+        {
+            "name": "Bossy Cat",
+            "avatar_alive": "/enemies/bossy-cat-alive.png",
+            "avatar_dead": "/enemies/bossy-cat-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Bossy Cat hisses in your face and claws you!"
+                },
+                {
+                    "message": "Bossy Pinata pees on your tools!"
+                }
+            ],
+            "hp": 2175,
+            "damage_low_range": 260,
+            "damage_high_range": 275,
+            "gold_low_range": 150,
+            "gold_high_range": 170,
+            "xp_low_range": 1,
+            "xp_high_range": 17,
+            "drop": "diamond"
         }
     ]
 }

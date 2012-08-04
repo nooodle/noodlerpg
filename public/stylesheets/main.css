@@ -188,6 +188,10 @@ p.intro, .game h1, .dashboard h1, .store h1 {
     position: relative;
 }
 
+.store .items li ol li {
+    clear: both;
+}
+
 .store .items li span, .detail .tools li span,
 .dashboard .tools li span, .dashboard .inventory li span {
     display: block;
@@ -212,7 +216,7 @@ p.intro, .game h1, .dashboard h1, .store h1 {
 }
 
 .store .items li.disabled img {
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .store .items li.disabled span {
@@ -228,7 +232,7 @@ p.intro, .game h1, .dashboard h1, .store h1 {
     display: none;
     background-color: #fff;
     padding: 5px;
-    width: 100px;
+    width: 90px;
     font-size: 11px;
     line-height: 14px;
     border-radius: 5px;
@@ -246,7 +250,8 @@ p.intro, .game h1, .dashboard h1, .store h1 {
 
 .store .items .requirements ol li {
     border: 0px;
-    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: -1px;
     width: auto;
     height: auto;
     border-radius: 0;
@@ -367,6 +372,8 @@ p.intro, .game h1, .dashboard h1, .store h1 {
 
 .dashboard .tools {
     height: 106px;
+    padding-bottom: 40px;
+    padding-top: 20px;
     top: 350px;
 }
 
@@ -572,6 +579,21 @@ a.fight-again:hover {
     color: #fff;
 }
 
+#drop {
+    background-color: #ffe614;
+    display: none;
+    left: 20px;
+    padding: 5px;
+    position: absolute;
+    top: 70px;
+}
+
+#drop p {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-shadow: #fff 1px 1px 0px;
+}
+
 .jobs li:hover span {
     display: block;
 }
@@ -676,3 +698,20 @@ a.fight-again:hover {
 .level7.detail .wrapper {
     background-image: url('/locations/level7-detail.jpg');
 }
+
+.level8 .wrapper {
+    background-image: url('/locations/level8-preview.jpg');
+}
+
+.level8.detail .wrapper {
+    background-image: url('/locations/level8-detail.jpg');
+}
+
+.level9 .wrapper {
+    background-image: url('/locations/level9-preview.jpg');
+}
+
+.level9.detail .wrapper {
+    background-image: url('/locations/level9-detail.jpg');
+}
+

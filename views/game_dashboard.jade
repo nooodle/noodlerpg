@@ -56,3 +56,9 @@ block content
           img(src='/tools/#{toolName}.png')
           span= session.tools[name].name
       - }
+      - for(var name in session.drops) {
+        - var dropName = session.drops[name].name.replace(/\s/, '_');
+        li(data-tool='#{dropName}')
+          img(src='/drops/#{dropName}.png')
+          span= session.drops[name].name
+      - }

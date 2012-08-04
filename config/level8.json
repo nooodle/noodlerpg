@@ -3,16 +3,16 @@
     "enemies":
     [
         {
-            "name": "Steaky",
-            "avatar_alive": "/enemies/steaky-alive.png",
-            "avatar_dead": "/enemies/steaky-dead.png",
+            "name": "Clowdy",
+            "avatar_alive": "/enemies/clowdy-alive.png",
+            "avatar_dead": "/enemies/clowdy-dead.png",
             "battle_messages":
             [
                 {
-                    "message": "Steaky slathers his rawness on you!"
+                    "message": "Clowdy creates a tornado and throws it at you!"
                 },
                 {
-                    "message": "Steaky whips hot charcoal in your direction!"
+                    "message": "Clowdy makes the rain hit you like needles!"
                 }
             ],
             "hp": 1950,

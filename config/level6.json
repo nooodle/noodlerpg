@@ -63,7 +63,8 @@
             "gold_low_range": 120,
             "gold_high_range": 150,
             "xp_low_range": 1,
-            "xp_high_range": 11
+            "xp_high_range": 11,
+            "drop": "feather"
         }
     ]
 }

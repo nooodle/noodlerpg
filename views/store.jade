@@ -6,29 +6,60 @@ mixin toolList(tool, enabled)
     span.cost= tool.cost
     span.tool-type(data-key='#{tool.name.toLowerCase().replace(/\s/, '_')}')= tool.name
     .requirements
-      = 'Needs the following: '
+      = 'Needs: '
       ol
         li= '-level ' + tool.min_level
         if tool.prerequisites.length > 0
           - for (var item in tool.prerequisites) {
             li
               -
-              = tool.prerequisites[item]
+              = tool.prerequisites[item].replace('_', ' ')
           - }
+
+mixin toolPurchase(name)
+  - var enabled = 'enabled';
+  - if (canPurchase(session, name)) {
+    enabled = 'disabled';
+  - } else {
+    - if (tools[name].prerequisites.length > 0) {
+      - for (var i = 0; i < tools[name].prerequisites.length; i ++) {
+        - if (!session.tools[tools[name].prerequisites[i]] && !session.activeTools[tools[name].prerequisites[i]]) {
+          - enabled = 'disabled';
+          - break;
+        - }
+      - }
+    - }
+  - }
 
 block content
   h1= title
 
   ul.items
+    - var cannotPurchase = function(name) {
+      - var tool = tools[name];
+      - if (session.level < tool.min_level || tool.cost > session.gold || session.tools[name] || session.activeTools[name]) {
+        - return true;
+      - } else {
+        - return false;
+      - }
+    - };
+    - var alreadyOwned = function(name, i) {
+      - if (!session.tools[tools[name].prerequisites[i]] && !session.activeTools[tools[name].prerequisites[i]]) {
+        - return true;
+      - } else {
+        - return false;
+      - }
+    - };
+
     - for (var name in tools) {
       if name !== 'fist'
         - var enabled = 'enabled';
-        - if (session.level < tools[name].min_level || tools[name].cost > session.gold || session.tools[name] || session.activeTools[name]) {
+        - if (cannotPurchase(name)) {
           enabled = 'disabled';
         - } else {
           - if (tools[name].prerequisites.length > 0) {
             - for (var i = 0; i < tools[name].prerequisites.length; i ++) {
-              - if (!session.tools[tools[name].prerequisites[i]] && !session.activeTools[tools[name].prerequisites[i]]) {
+              - if (alreadyOwned(name, i)) {
                 - enabled = 'disabled';
                 - break;
               - }

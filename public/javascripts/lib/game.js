@@ -12,6 +12,7 @@ define(['jquery'], function ($) {
   var currentTools = $('.dashboard .tools ul');
   var inventory = $('.dashboard .inventory ul');
   var activeStoreItems = $('.store .items li.enabled');
+  var drop = $('#drop img');
 
   var updateStats = function(options) {
     enemy.data('hp', options.enemy_hp);
@@ -23,6 +24,57 @@ define(['jquery'], function ($) {
     stats.find('#enemy-hp span').text(options.enemy_hp);
   };
 
+  var battleTrigger = function(params) {
+    $.post('/battle', params, function(data) {
+      var playerHP = Math.round(data.result.player_hp);
+      var enemyHP = data.result.enemy_hp;
+      var enemyDamage = Math.round(data.result.enemy_damage);
+      var gold = data.result.gold;
+      var xp = data.result.xp;
+      var mp = data.result.mp;
+
+      if (enemyHP < 1 || playerHP < 1) {
+        if (enemyHP < 1 && playerHP > 0) {
+          enemy.attr('src', enemy.attr('src').replace('-alive', '-dead'));
+          enemy.addClass('dead').removeClass('alive');
+          enemyHP = 0;
+          message.text('You win!');
+
+          if (playerHP > 1 && enemyHP < 1) {
+            if (data.result.drop) {
+              drop.attr('src', '/drops/' + data.result.drop + '.png');
+              drop.parent().fadeIn();
+            }
+
+            fightAgain.fadeIn();
+          }
+
+        } else {
+          if (enemyHP < 0) {
+            enemyHP = 0;
+          }
+
+          message.text('You lost :(');
+          player.attr('src', player.attr('src').replace('-alive', '-dead'));
+          player.addClass('dead').removeClass('alive');
+          playerHP = 0;
+          message.text('You lost :(');
+        }
+      }
+
+      updateStats({
+        player_hp: Math.round(playerHP),
+        enemy_hp: enemyHP,
+        enemy_damage: Math.round(enemyDamage),
+        gold: gold,
+        xp: xp,
+        mp: mp
+      });
+
+      fightAction.fadeOut();
+    });
+  };
+
   var self = {
     refuel: function() {
       $.get('/refuel', function(data) {
@@ -30,6 +82,7 @@ define(['jquery'], function ($) {
         statsDashboard.find('#hp span').text(data.result.hp);
       });
     },
+
     fight: function(self) {
       if (enemy.hasClass('alive') && player.hasClass('alive')) {
         var params = {
@@ -39,45 +92,10 @@ define(['jquery'], function ($) {
 
         fightAction.fadeIn();
 
-        $.post('/battle', params, function(data) {
-          var playerHP = data.result.player_hp;
-          var enemyHP = data.result.enemy_hp;
-          var enemyDamage = data.result.enemy_damage;
-          var gold = data.result.gold;
-          var xp = data.result.xp;
-          var mp = data.result.mp;
-
-          if (enemyHP < 1 || playerHP < 1) {
-            if (enemyHP < 1) {
-              enemy.attr('src', enemy.attr('src').replace('-alive', '-dead'));
-              enemy.addClass('dead').removeClass('alive');
-              enemyHP = 0;
-              message.text('You win!');
-
-              if (playerHP > 1 && enemyHP < 1) {
-                fightAgain.fadeIn();
-              }
-            } else {
-              player.attr('src', player.attr('src').replace('-alive', '-dead'));
-              player.addClass('dead').removeClass('alive');
-              playerHP = 0;
-              message.text('You lost :(');
-            }
-          }
-
-          updateStats({
-            player_hp: playerHP,
-            enemy_hp: enemyHP,
-            enemy_damage: enemyDamage,
-            gold: gold,
-            xp: xp,
-            mp: mp
-          });
-
-          fightAction.fadeOut();
-        });
+        battleTrigger(params);
       }
     },
+
     buy: function(self) {
       var goldAmountNum = parseInt(goldAmount.text(), 10);
 
@@ -99,6 +117,7 @@ define(['jquery'], function ($) {
         });
       }
     },
+
     addTool: function(self) {
       if (currentTools.find('li').length < 6) {
         var params = {
@@ -113,6 +132,7 @@ define(['jquery'], function ($) {
         });
       }
     },
+
     removeTool: function(self) {
       var params = {
         tool: self.data('tool')

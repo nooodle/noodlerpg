@@ -126,5 +126,20 @@
             "acid",
             "laser"
         ]
+    },
+    "faerie": {
+        "name": "faerie",
+        "min_level": 8,
+        "damage_low_range": 135,
+        "damage_high_range": 155,
+        "mp_low_range": 11,
+        "mp_high_range": 19,
+        "cost": 10500,
+        "prerequisites":
+        [
+            "battery",
+            "acid",
+            "poison_powder"
+        ]
     }
 }

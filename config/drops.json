@@ -1,0 +1,10 @@
+{
+    "feather": {
+        "name": "feather",
+        "prerequisites": []
+    },
+    "diamond": {
+        "name": "diamond",
+        "prerequisites": []
+    }
+}

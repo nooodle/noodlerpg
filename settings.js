@@ -11,7 +11,8 @@ module.exports = function(app, configurations, express) {
     app.use(express.cookieParser());
     app.use(express.session({
       secret: nconf.get('session_secret'),
-      store: new MemoryStore({ reapInterval: 60000 * 10 })
+      store: new MemoryStore({ reapInterval: 60000 * 10 }),
+      cookie: { maxAge: 990000000 } // 1 week-ish
     }));
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
