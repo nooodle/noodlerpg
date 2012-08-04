@@ -16,8 +16,8 @@
                 }
             ],
             "hp": 1650,
-            "damage_low_range": 215,
-            "damage_high_range": 239,
+            "damage_low_range": 185,
+            "damage_high_range": 199,
             "gold_low_range": 100,
             "gold_high_range": 121,
             "xp_low_range": 1,
@@ -37,8 +37,8 @@
                 }
             ],
             "hp": 1675,
-            "damage_low_range": 220,
-            "damage_high_range": 245,
+            "damage_low_range": 190,
+            "damage_high_range": 205,
             "gold_low_range": 95,
             "gold_high_range": 115,
             "xp_low_range": 1,
@@ -57,13 +57,13 @@
                     "message": "Bossy Pinata pees on your tools!"
                 }
             ],
-            "hp": 2175,
-            "damage_low_range": 260,
-            "damage_high_range": 275,
-            "gold_low_range": 150,
-            "gold_high_range": 170,
-            "xp_low_range": 1,
-            "xp_high_range": 17,
+            "hp": 2275,
+            "damage_low_range": 300,
+            "damage_high_range": 315,
+            "gold_low_range": 170,
+            "gold_high_range": 190,
+            "xp_low_range": 5,
+            "xp_high_range": 20,
             "drop": "diamond"
         }
     ]

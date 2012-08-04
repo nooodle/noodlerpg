@@ -17,15 +17,6 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     }
   });
 
-  app.get('/wipe', function(req, res) {
-    req.session.hp = 5000;
-    req.session.gold = 10000;
-
-    user.saveStats(req, db, function(err, user) {
-      res.redirect('/dashboard');
-    });
-  });
-
   app.get('/dashboard', isLoggedIn, resetEnemy, function(req, res) {
     var hasJob = false;
     if (utils.getObjectSize(req.session.job) > 0) {

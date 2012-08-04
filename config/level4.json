@@ -15,7 +15,7 @@
                     "message": "Siree gives you the worst tinnitus!"
                 }
             ],
-            "hp": 145,
+            "hp": 165,
             "damage_low_range": 65,
             "damage_high_range": 88,
             "gold_low_range": 39,
@@ -36,7 +36,7 @@
                     "message": "Spidee tricks you into an invisible wall of web!"
                 }
             ],
-            "hp": 155,
+            "hp": 175,
             "damage_low_range": 59,
             "damage_high_range": 81,
             "gold_low_range": 43,

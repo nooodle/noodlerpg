@@ -15,7 +15,7 @@
                     "message": "Boogy rolls up into a ball and flies towards your eye"
                 }
             ],
-            "hp": 950,
+            "hp": 750,
             "damage_low_range": 135,
             "damage_high_range": 149,
             "gold_low_range": 69,
@@ -36,7 +36,7 @@
                     "message": "Baguetto elongates itself into supersize!"
                 }
             ],
-            "hp": 975,
+            "hp": 775,
             "damage_low_range": 150,
             "damage_high_range": 165,
             "gold_low_range": 77,

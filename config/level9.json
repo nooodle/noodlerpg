@@ -1,5 +1,5 @@
 {
-    "location": "Ocean Planet",
+    "location": "Paradigm Moon",
     "enemies":
     [
         {
@@ -15,7 +15,7 @@
                     "message": "Clowdy makes the rain hit you like needles!"
                 }
             ],
-            "hp": 2150,
+            "hp": 4050,
             "damage_low_range": 215,
             "damage_high_range": 239,
             "gold_low_range": 100,
@@ -24,25 +24,25 @@
             "xp_high_range": 17
         },
         {
-            "name": "Bossy Soap",
-            "avatar_alive": "/enemies/bossy-soap-alive.png",
-            "avatar_dead": "/enemies/bossy-soap-dead.png",
+            "name": "Pinny",
+            "avatar_alive": "/enemies/pinny-alive.png",
+            "avatar_dead": "/enemies/pinny-dead.png",
             "battle_messages":
             [
                 {
-                    "message": "Bossy Soap lathers suds in your eyes .. it stings!"
+                    "message": "Pinny tears your soul apart!"
                 },
                 {
-                    "message": "Bossy Soap activates bars on the ground .. it's slippery!"
+                    "message": "Pinny moves a box around and chains fly towards you!"
                 }
             ],
-            "hp": 4275,
-            "damage_low_range": 380,
-            "damage_high_range": 400,
-            "gold_low_range": 190,
-            "gold_high_range": 220,
-            "xp_low_range": 5,
-            "xp_high_range": 25
+            "hp": 4075,
+            "damage_low_range": 220,
+            "damage_high_range": 245,
+            "gold_low_range": 95,
+            "gold_high_range": 115,
+            "xp_low_range": 1,
+            "xp_high_range": 17
         }
     ]
 }
