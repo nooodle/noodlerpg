@@ -18,10 +18,10 @@
             "hp": 2150,
             "damage_low_range": 215,
             "damage_high_range": 239,
-            "gold_low_range": 100,
-            "gold_high_range": 121,
-            "xp_low_range": 1,
-            "xp_high_range": 17
+            "gold_low_range": 110,
+            "gold_high_range": 131,
+            "xp_low_range": 20,
+            "xp_high_range": 43
         },
         {
             "name": "Bossy Soap",
@@ -41,8 +41,8 @@
             "damage_high_range": 400,
             "gold_low_range": 190,
             "gold_high_range": 220,
-            "xp_low_range": 5,
-            "xp_high_range": 25
+            "xp_low_range": 20,
+            "xp_high_range": 43
         }
     ]
 }

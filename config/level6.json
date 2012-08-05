@@ -41,8 +41,8 @@
             "damage_high_range": 165,
             "gold_low_range": 77,
             "gold_high_range": 85,
-            "xp_low_range": 1,
-            "xp_high_range": 11
+            "xp_low_range": 5,
+            "xp_high_range": 15
         },
         {
             "name": "Bossy Pinata",
@@ -62,8 +62,8 @@
             "damage_high_range": 215,
             "gold_low_range": 120,
             "gold_high_range": 150,
-            "xp_low_range": 1,
-            "xp_high_range": 11,
+            "xp_low_range": 5,
+            "xp_high_range": 23,
             "drop": "feather"
         }
     ]
