@@ -18,8 +18,8 @@
             "hp": 165,
             "damage_low_range": 65,
             "damage_high_range": 88,
-            "gold_low_range": 39,
-            "gold_high_range": 53,
+            "gold_low_range": 69,
+            "gold_high_range": 83,
             "xp_low_range": 4,
             "xp_high_range": 8
         },
@@ -39,8 +39,8 @@
             "hp": 175,
             "damage_low_range": 59,
             "damage_high_range": 81,
-            "gold_low_range": 43,
-            "gold_high_range": 60,
+            "gold_low_range": 63,
+            "gold_high_range": 90,
             "xp_low_range": 4,
             "xp_high_range": 8
         }

@@ -18,8 +18,8 @@
             "hp": 1650,
             "damage_low_range": 155,
             "damage_high_range": 169,
-            "gold_low_range": 100,
-            "gold_high_range": 121,
+            "gold_low_range": 150,
+            "gold_high_range": 181,
             "xp_low_range": 10,
             "xp_high_range": 24
         },
@@ -39,8 +39,8 @@
             "hp": 1675,
             "damage_low_range": 160,
             "damage_high_range": 175,
-            "gold_low_range": 95,
-            "gold_high_range": 115,
+            "gold_low_range": 155,
+            "gold_high_range": 185,
             "xp_low_range": 10,
             "xp_high_range": 28
         },
@@ -60,8 +60,8 @@
             "hp": 2275,
             "damage_low_range": 300,
             "damage_high_range": 315,
-            "gold_low_range": 170,
-            "gold_high_range": 190,
+            "gold_low_range": 470,
+            "gold_high_range": 590,
             "xp_low_range": 10,
             "xp_high_range": 34,
             "drop": "diamond"

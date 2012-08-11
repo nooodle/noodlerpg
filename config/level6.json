@@ -18,8 +18,8 @@
             "hp": 750,
             "damage_low_range": 135,
             "damage_high_range": 149,
-            "gold_low_range": 79,
-            "gold_high_range": 88,
+            "gold_low_range": 120,
+            "gold_high_range": 188,
             "xp_low_range": 5,
             "xp_high_range": 15
         },
@@ -39,8 +39,8 @@
             "hp": 775,
             "damage_low_range": 130,
             "damage_high_range": 145,
-            "gold_low_range": 77,
-            "gold_high_range": 85,
+            "gold_low_range": 120,
+            "gold_high_range": 185,
             "xp_low_range": 5,
             "xp_high_range": 15
         },
@@ -60,8 +60,8 @@
             "hp": 1375,
             "damage_low_range": 190,
             "damage_high_range": 215,
-            "gold_low_range": 120,
-            "gold_high_range": 150,
+            "gold_low_range": 290,
+            "gold_high_range": 450,
             "xp_low_range": 5,
             "xp_high_range": 23,
             "drop": "feather"
