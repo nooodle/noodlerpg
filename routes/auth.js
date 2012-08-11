@@ -7,17 +7,13 @@ module.exports = function(app, db, nconf, isLoggedIn) {
   app.post('/login', function(req, res) {
     auth.verify(req, nconf, function(error, email) {
       if (email) {
-        if (invitees[email]) {
-          user.getStats(email, db, function(err, userStat) {
-            for (var name in userStat) {
-              req.session[name] = userStat[name];
-            }
+        user.getStats(email, db, function(err, userStat) {
+          for (var name in userStat) {
+            req.session[name] = userStat[name];
+          }
 
-            res.redirect('/dashboard');
-          });
-        } else {
-          res.redirect('/restricted');
-        }
+          res.redirect('/dashboard');
+        });
       } else {
         res.redirect('/');
       }
