@@ -43,6 +43,27 @@
             "gold_high_range": 60,
             "xp_low_range": 3,
             "xp_high_range": 6
+        },
+        {
+            "name": "Banky",
+            "avatar_alive": "/enemies/banky-alive.png",
+            "avatar_dead": "/enemies/banky-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Banky tries to steal your gold!"
+                },
+                {
+                    "message": "Banky jacks up interest rates on your loans!"
+                }
+            ],
+            "hp": 105,
+            "damage_low_range": 49,
+            "damage_high_range": 65,
+            "gold_low_range": 88,
+            "gold_high_range": 110,
+            "xp_low_range": 4,
+            "xp_high_range": 7
         }
     ]
 }

@@ -24,6 +24,27 @@
             "xp_high_range": 43
         },
         {
+            "name": "Bunny",
+            "avatar_alive": "/enemies/bunny-alive.png",
+            "avatar_dead": "/enemies/bunny-dead.png",
+            "battle_messages":
+            [
+                {
+                    "message": "Bunny digs claws into your skin!"
+                },
+                {
+                    "message": "Bunny fires off a million rabbit poops!"
+                }
+            ],
+            "hp": 2250,
+            "damage_low_range": 198,
+            "damage_high_range": 220,
+            "gold_low_range": 250,
+            "gold_high_range": 291,
+            "xp_low_range": 23,
+            "xp_high_range": 46
+        },
+        {
             "name": "Bossy Soap",
             "avatar_alive": "/enemies/bossy-soap-alive.png",
             "avatar_dead": "/enemies/bossy-soap-dead.png",
@@ -41,7 +62,7 @@
             "damage_high_range": 400,
             "gold_low_range": 610,
             "gold_high_range": 850,
-            "xp_low_range": 20,
+            "xp_low_range": 38,
             "xp_high_range": 43
         }
     ]
