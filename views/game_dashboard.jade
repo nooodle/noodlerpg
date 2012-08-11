@@ -1,5 +1,7 @@
 extend layout
 
+block ship
+
 block content
   h1= title
 
@@ -32,7 +34,7 @@ block content
             = session.job.name
           else
             a(href='/job', class='button') Set a job
-            .info-tip Choose a job before you can battle!
+            .info-tip You need to choose a job before you can battle!
       li#start-over
         h3 Reset
         span End game (you will lose all stats)

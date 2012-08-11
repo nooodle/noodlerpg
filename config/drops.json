@@ -6,5 +6,12 @@
     "diamond": {
         "name": "diamond",
         "prerequisites": []
+    },
+    "wormhole": {
+        "name": "wormhole",
+        "prerequisites": [
+            "feather",
+            "diamond"
+        ]
     }
 }

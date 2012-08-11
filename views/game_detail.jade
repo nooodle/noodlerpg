@@ -7,7 +7,7 @@ block content
     img(src='#{session.job.avatar_dead}', class='battle dead player')
   else
     img(src='#{session.job.avatar_alive}', class='battle alive player')
-    img(src='#{enemy.avatar_alive}', class='battle alive enemy')
+    img(src='#{enemy.avatar_alive}', class='battle alive enemy #{isBoss}')
     img(src='/actions/pow.png', class='action')
 
     a(href='/detail/#{level}', class='fight-again') fight again!
@@ -42,8 +42,3 @@ block content
       span= session.xp
     li#gold Gold
       span= session.gold
-
-  #ship
-    .message
-      p Return to homebase!
-    a(href='/dashboard') Dashboard

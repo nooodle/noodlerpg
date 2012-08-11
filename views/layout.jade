@@ -22,6 +22,19 @@ html
 
       block content
 
+      block ship
+        #ship
+          if session.email
+            .message
+              p Return to homebase!
+            a(href='/dashboard') Dashboard
+          else
+            .message
+              p Log into your ship now!
+            form(method='post', action='/login', id='login-form')
+              a(href='#', id='login') Sign in
+              input(type='hidden', name='bid_assertion', value='1')
+
     #footer
 
     script(src='https://browserid.org/include.js', type='text/javascript')

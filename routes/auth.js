@@ -20,13 +20,6 @@ module.exports = function(app, db, nconf, isLoggedIn) {
     });
   });
 
-  app.get('/restricted', function(req, res) {
-    res.render('restricted', {
-      pageType: 'restricted',
-      title: 'You aren\'t on the Invite List :('
-    });
-  });
-
   // Logout
   app.get('/logout', isLoggedIn, function(req, res) {
     req.session.destroy();

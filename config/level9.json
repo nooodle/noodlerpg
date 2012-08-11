@@ -16,12 +16,12 @@
                 }
             ],
             "hp": 12050,
-            "damage_low_range": 965,
+            "damage_low_range": 975,
             "damage_high_range": 1059,
             "gold_low_range": 500,
             "gold_high_range": 650,
-            "xp_low_range": 40,
-            "xp_high_range": 60,
+            "xp_low_range": 0,
+            "xp_high_range": 0,
             "drop": "wormhole"
         }
     ]

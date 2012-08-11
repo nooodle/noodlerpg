@@ -23,17 +23,17 @@ module.exports = function(app, configurations, express) {
     app.use(app.router);
     app.use(function(req, res, next) {
       res.status(403);
-      res.render('403', { url: req.url, layout: 'error_layout.jade' });
+      res.render('403', { url: req.url, layout: false });
       return;
     });
     app.use(function(req, res, next) {
       res.status(404);
-      res.render('404', { url: req.url, layout: 'error_layout.jade' });
+      res.render('404', { url: req.url, layout: false });
       return;
     });
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
-      res.render('500', { error: err, layout: 'error_layout.jade' });
+      res.render('500', { error: err, layout: false });
     });
   });
 

@@ -2,13 +2,11 @@ extend layout
 
 block content
   .levels
-    - for (var i = 1; i < parseInt(session.level, 10) + 1; i ++) {
+    - var level = parseInt(session.level, 10);
+    - for (var i = 1; i < level + 1; i ++) {
       a(href='/preview/#{i}')
         img(src='/scenes/level#{i}.png')
         span Level #{i}
+        if i === 9
+          .requirements Needs the following for access: feather, diamond
     - }
-
-  #ship
-    .message
-      p Return to homebase!
-    a(href='/dashboard') Dashboard

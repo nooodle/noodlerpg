@@ -6,14 +6,18 @@ block content
   h1 Available Jobs
 
   ul.jobs
-    li(data-job='engineer')
-      img(src='/jobs/engineer-alive.png')
-      span Be an Engineer!
-    li(data-job='technician')
-      img(src='/jobs/technician-alive.png')
-      span Be a Technician!
+    if parseInt(session.ascension, 10) === 0
+      li(data-job='engineer')
+        img(src='/jobs/engineer-alive.png')
+        span Be an Engineer!
+      li(data-job='technician')
+        img(src='/jobs/technician-alive.png')
+        span Be a Technician!
 
-  #ship
-    .message
-      p Return to homebase!
-    a(href='/dashboard') Dashboard
+    else if parseInt(session.ascension, 10) > 0
+      li(data-job='chemist')
+        img(src='/jobs/chemist-alive.png')
+        span Be a Chemist!
+      li(data-job='wizard')
+        img(src='/jobs/wizard-alive.png')
+        span Be a Wizard!

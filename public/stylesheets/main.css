@@ -359,6 +359,7 @@ p.intro, .game h1, .dashboard h1, .store h1 {
 
 .dashboard .stats {
     top: 55px;
+    overflow: hidden;
 }
 
 .stats li {
@@ -608,6 +609,24 @@ a.fight-again:hover {
     display: block;
 }
 
+.universe .levels .requirements {
+    position: absolute;
+    display: none;
+    color: #fff;
+    font-size: 12px;
+    line-height: 14px;
+    width: 130px;
+    padding: 5px 10px 5px 10px;
+    background-image: url('/misc/tool-dash.png');
+    border-radius: 5px;
+    top: 0px;
+    left: 80px;
+}
+
+.universe .levels a:hover > .requirements {
+    display: block;
+}
+
 .universe .levels a {
     display: block;
     float: left;
@@ -715,6 +734,67 @@ a.fight-again:hover {
     background-image: url('/locations/level9-detail.jpg');
 }
 
+.boss {
+    opacity: 0;
+    -webkit-animation: fadein 1s ease-in-out -1s infinite alternate;
+    -moz-animation: fadein 1s ease-in-out -1s infinite alternate;
+    animation: fadein 1s ease-in-out -1s infinite alternate;
+}
+
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0.2;
+    }
+    66% {
+        opacity: 0.5;
+    }
+    76% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0.2;
+    }
+    66% {
+        opacity: 0.5;
+    }
+    76% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0.2;
+    }
+    66% {
+        opacity: 0.5;
+    }
+    76% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .end, .end .wrapper, .end .wrapper .inner {
     background-image: url('/locations/the-end.jpg');
 }
@@ -730,6 +810,7 @@ a.fight-again:hover {
 .end .wrapper .inner p {
     font-size: 35px;
     padding-top: 30px;
+    text-shadow: #fff 1px 1px 13px;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -753,13 +834,17 @@ a.fight-again:hover {
 }
 
 .info-tip {
-    background-color: #e69327;
-    border-radius: 5px;
+    background-image: url('/misc/tooltip.png');
+    background-repeat: no-repeat;
     position: absolute;
-    left: 230px;
-    top: 190px;
-    font-size: 16px;
-    line-height: 19px;
-    padding: 10px;
-    width: 230px;
+    left: 220px;
+    top: 173px;
+    font-size: 20px;
+    line-height: 22px;
+    font-family: "CabinSketchRegular";
+    color: #2a2604;
+    text-shadow: none;
+    padding: 15px 50px 30px 60px;
+    height: 107px;
+    width: 200px;
 }

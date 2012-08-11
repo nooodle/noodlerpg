@@ -36,7 +36,14 @@ define(['jquery'], function ($) {
       if (enemyHP < 1 || playerHP < 1) {
         if (enemyHP < 1 && playerHP > 0) {
           if (data.result.drop === 'wormhole') {
-            document.location = '/the_end';
+            message.text('You win!');
+            enemy.fadeOut(2500, function() {
+              player.fadeOut(2500, function() {
+                $('.wrapper').fadeOut(2500, function() {
+                  document.location = '/the_end';
+                });
+              });
+            });
           } else {
             enemy.attr('src', enemy.attr('src').replace('-alive', '-dead'));
             enemy.addClass('dead').removeClass('alive');

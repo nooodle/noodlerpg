@@ -80,6 +80,19 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
     });
   });
 
+  // TODO
+  app.get('/up', function(req, res) {
+    req.session.gold = 100000;
+    req.session.hp = 100000;
+    req.session.xp = 10000;
+    req.session.level = 8;
+    req.session.job = {};
+
+    user.saveStats(req, db, function(err, user) {
+      res.redirect('/dashboard');
+    });
+  });
+
   app.post('/buy', isLoggedIn, resetEnemy, function(req, res) {
     var toolName = req.body.tool;
     var gold = parseInt(req.session.gold, 10);
@@ -120,27 +133,21 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
   });
 
   app.get('/refuel', isLoggedIn, resetEnemy, function(req, res) {
-    var gold = parseInt(req.session.gold, 10);
+    var data = { result: {} };
 
-    if (gold >= 10) {
-      var data = { result: {} };
-      req.session.hp = parseInt(req.session.hp, 10) + 15;
-      req.session.gold = gold - 10;
+    user.refuel(req, db, function(err, userResp) {
+      if (err) {
+        data.result.status = 500;
+      } else {
+        data.result = {
+          hp: userResp.hp,
+          gold: userResp.gold,
+          status: 200
+        };
+      }
 
-      user.saveStats(req, db, function(err, user) {
-        if (err) {
-          data.result.status = 500;
-        } else {
-          data.result = {
-            hp: user.hp,
-            gold: user.gold,
-            status: 200
-          };
-        }
-
-        res.json(data);
-      });
-    }
+      res.json(data);
+    });
   });
 
   app.get('/job', isLoggedIn, hasNoJob, resetEnemy, function(req, res) {
@@ -151,7 +158,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
   });
 
   app.post('/job', isLoggedIn, hasNoJob, resetEnemy, function(req, res) {
-    user.setJob(req.body.job, function(err, job) {
+    user.setJob(req, function(err, job) {
       req.session.job = job;
 
       user.saveStats(req, db, function(err, user) {
@@ -176,6 +183,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
   app.get('/detail/:level', isLoggedIn, hasJob, sufficientLevelAccess,
     hasActiveTool, hasFinalLevelAccess, function(req, res) {
 
+    var isBoss = '';
     var level = parseInt(req.params.level, 10);
     var config = require('../config/level' + level);
     var enemy = config.enemies[Math.floor(Math.random() * config.enemies.length)];
@@ -183,11 +191,16 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
     req.session.enemy = enemy;
     req.session.last_level_played = level;
 
+    if (level === 9) {
+      isBoss = 'boss';
+    }
+
     res.render('game_detail', {
       pageType: 'game detail level' + level,
       level: level,
       title: 'The world of ' + config.location,
       enemy: enemy,
+      isBoss: isBoss,
       message: enemy.battle_messages[Math.floor(Math.random() * enemy.battle_messages.length)].message
     });
   });
@@ -210,5 +223,16 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
     res.render('end', {
       pageType: 'end'
     })
+  });
+
+  app.get('/ascend', isLoggedIn, hasJob, hasFinalLevelAccess, function(req, res) {
+    user.ascendStats(req, db, function(err, userResp) {
+      if (err) {
+        res.redirect('/500');
+
+      } else {
+        res.redirect('/dashboard');
+      }
+    });
   });
 };
