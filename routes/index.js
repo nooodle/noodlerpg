@@ -80,19 +80,6 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
     });
   });
 
-  // TODO
-  app.get('/up', function(req, res) {
-    req.session.gold = 100000;
-    req.session.hp = 100000;
-    req.session.xp = 10000;
-    req.session.level = 8;
-    req.session.job = {};
-
-    user.saveStats(req, db, function(err, user) {
-      res.redirect('/dashboard');
-    });
-  });
-
   app.post('/buy', isLoggedIn, resetEnemy, function(req, res) {
     var toolName = req.body.tool;
     var gold = parseInt(req.session.gold, 10);
