@@ -751,3 +751,15 @@ a.fight-again:hover {
 .end .wrapper, .end .wrapper .inner {
     box-shadow: inset #fff 0px 0px 25px;
 }
+
+.info-tip {
+    background-color: #e69327;
+    border-radius: 5px;
+    position: absolute;
+    left: 230px;
+    top: 190px;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 10px;
+    width: 230px;
+}
