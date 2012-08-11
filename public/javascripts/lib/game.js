@@ -35,18 +35,22 @@ define(['jquery'], function ($) {
 
       if (enemyHP < 1 || playerHP < 1) {
         if (enemyHP < 1 && playerHP > 0) {
-          enemy.attr('src', enemy.attr('src').replace('-alive', '-dead'));
-          enemy.addClass('dead').removeClass('alive');
-          enemyHP = 0;
-          message.text('You win!');
+          if (data.result.drop === 'wormhole') {
+            document.location = '/the_end';
+          } else {
+            enemy.attr('src', enemy.attr('src').replace('-alive', '-dead'));
+            enemy.addClass('dead').removeClass('alive');
+            enemyHP = 0;
+            message.text('You win!');
 
-          if (playerHP > 1 && enemyHP < 1) {
-            if (data.result.drop) {
-              drop.attr('src', '/drops/' + data.result.drop + '.png');
-              drop.parent().fadeIn();
+            if (playerHP > 1 && enemyHP < 1) {
+              if (data.result.drop) {
+                drop.attr('src', '/drops/' + data.result.drop + '.png');
+                drop.parent().fadeIn();
+              }
+
+              fightAgain.fadeIn();
             }
-
-            fightAgain.fadeIn();
           }
 
         } else {

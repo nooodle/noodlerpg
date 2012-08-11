@@ -6,7 +6,9 @@ var utils = require('../lib/utils');
 var config = require('../config/defaults');
 var tools = require('../config/tools');
 
-module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess, hasEnemy, resetEnemy, hasActiveTool) {
+module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
+  sufficientLevelAccess, hasEnemy, resetEnemy, hasActiveTool, hasFinalLevelAccess) {
+
   app.get('/', function(req, res) {
     if (req.session.email) {
       res.redirect('/dashboard');
@@ -79,13 +81,16 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
   });
 
   app.post('/buy', isLoggedIn, resetEnemy, function(req, res) {
-    if (!req.session.activeTools[req.body.tool] &&
-      !req.session.tools[req.body.tool] &&
-      parseInt(req.session.gold, 10) >= tools[req.body.tool].cost &&
-      parseInt(req.session.level, 10) >= tools[req.body.tool].min_level) {
+    var toolName = req.body.tool;
+    var gold = parseInt(req.session.gold, 10);
 
-      req.session.gold = parseInt(req.session.gold, 10) - parseInt(req.body.cost, 10);
-      req.session.tools[req.body.tool] = tools[req.body.tool];
+    if (!req.session.activeTools[toolName] &&
+      !req.session.tools[toolName] &&
+      gold >= tools[toolName].cost &&
+      parseInt(req.session.level, 10) >= tools[toolName].min_level) {
+
+      req.session.gold = gold - parseInt(req.body.cost, 10);
+      req.session.tools[toolName] = tools[toolName];
     }
 
     user.saveStats(req, db, function(err, user) {
@@ -155,7 +160,9 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
-  app.get('/preview/:level', isLoggedIn, hasJob, sufficientLevelAccess, resetEnemy, function(req, res) {
+  app.get('/preview/:level', isLoggedIn, hasJob, sufficientLevelAccess,
+    resetEnemy, hasFinalLevelAccess, function(req, res) {
+
     var level = parseInt(req.params.level, 10);
     var config = require('../config/level' + level);
 
@@ -166,7 +173,9 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
-  app.get('/detail/:level', isLoggedIn, hasJob, sufficientLevelAccess, hasActiveTool, function(req, res) {
+  app.get('/detail/:level', isLoggedIn, hasJob, sufficientLevelAccess,
+    hasActiveTool, hasFinalLevelAccess, function(req, res) {
+
     var level = parseInt(req.params.level, 10);
     var config = require('../config/level' + level);
     var enemy = config.enemies[Math.floor(Math.random() * config.enemies.length)];
@@ -183,7 +192,9 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
     });
   });
 
-  app.post('/battle', isLoggedIn, hasJob, sufficientLevelAccess, hasEnemy, hasActiveTool, function(req, res) {
+  app.post('/battle', isLoggedIn, hasJob, sufficientLevelAccess, hasEnemy,
+    hasActiveTool, function(req, res) {
+
     var level = parseInt(req.session.last_level_played, 10);
     var config = require('../config/level' + level);
     var result = {};
@@ -193,5 +204,11 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevel
         result: result
       });
     });
+  });
+
+  app.get('/the_end', isLoggedIn, hasJob, hasFinalLevelAccess, function(req, res) {
+    res.render('end', {
+      pageType: 'end'
+    })
   });
 };

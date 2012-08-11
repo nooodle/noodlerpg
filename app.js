@@ -45,6 +45,21 @@ var sufficientLevelAccess = function(req, res, next) {
   }
 };
 
+var hasFinalLevelAccess = function(req, res, next) {
+  var level = parseInt(req.params.level || req.body.level, 10);
+
+  // currently hardcoded
+  if (level === 9) {
+    if (req.session.drops['feather'] && req.session.drops['diamond']) {
+      next();
+    } else {
+      res.redirect('/dashboard');
+    }
+  } else {
+    next();
+  }
+};
+
 var hasEnemy = function(req, res, next) {
   if (req.session.enemy) {
     next();
@@ -69,7 +84,8 @@ var hasActiveTool = function(req, res, next) {
 };
 
 // routes
-require("./routes")(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess, hasEnemy, resetEnemy, hasActiveTool);
+require("./routes")(app, db, isLoggedIn, hasJob, hasNoJob, sufficientLevelAccess,
+  hasEnemy, resetEnemy, hasActiveTool, hasFinalLevelAccess);
 require('./routes/auth')(app, db, nconf, isLoggedIn);
 
 app.get('/404', function(req, res, next){

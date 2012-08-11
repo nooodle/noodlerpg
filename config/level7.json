@@ -20,8 +20,8 @@
             "damage_high_range": 169,
             "gold_low_range": 100,
             "gold_high_range": 121,
-            "xp_low_range": 1,
-            "xp_high_range": 14
+            "xp_low_range": 10,
+            "xp_high_range": 24
         },
         {
             "name": "Pinny",
@@ -42,7 +42,7 @@
             "gold_low_range": 95,
             "gold_high_range": 115,
             "xp_low_range": 10,
-            "xp_high_range": 24
+            "xp_high_range": 28
         },
         {
             "name": "Bossy Cat",
@@ -63,7 +63,7 @@
             "gold_low_range": 170,
             "gold_high_range": 190,
             "xp_low_range": 10,
-            "xp_high_range": 24,
+            "xp_high_range": 34,
             "drop": "diamond"
         }
     ]

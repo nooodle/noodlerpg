@@ -129,9 +129,9 @@
     },
     "faerie": {
         "name": "faerie",
-        "min_level": 8,
-        "damage_low_range": 155,
-        "damage_high_range": 175,
+        "min_level": 7,
+        "damage_low_range": 165,
+        "damage_high_range": 185,
         "mp_low_range": 11,
         "mp_high_range": 19,
         "cost": 10500,
@@ -140,6 +140,36 @@
             "battery",
             "acid",
             "poison_powder"
+        ]
+    },
+    "mini_wormhole": {
+        "name": "mini wormhole",
+        "min_level": 8,
+        "damage_low_range": 455,
+        "damage_high_range": 675,
+        "mp_low_range": 21,
+        "mp_high_range": 39,
+        "cost": 16500,
+        "prerequisites":
+        [
+            "laser",
+            "faerie",
+            "poison_powder"
+        ]
+    },
+    "mini_bossy": {
+        "name": "mini bossy",
+        "min_level": 8,
+        "damage_low_range": 985,
+        "damage_high_range": 1195,
+        "mp_low_range": 36,
+        "mp_high_range": 55,
+        "cost": 20500,
+        "prerequisites":
+        [
+            "battery",
+            "faerie",
+            "mini_wormhole"
         ]
     }
 }

@@ -3,25 +3,26 @@
     "enemies":
     [
         {
-            "name": "Clowdy",
-            "avatar_alive": "/enemies/clowdy-alive.png",
-            "avatar_dead": "/enemies/clowdy-dead.png",
+            "name": "Bossy Bosser Eye",
+            "avatar_alive": "/enemies/bossy-bosser-eye-alive.png",
+            "avatar_dead": "/enemies/bossy-bosser-eye-dead.png",
             "battle_messages":
             [
                 {
-                    "message": "Clowdy creates a tornado and throws it at you!"
+                    "message": "Bossy Bosser Eye is your final ticket to hell!"
                 },
                 {
-                    "message": "Clowdy makes the rain hit you like needles!"
+                    "message": "Bossy Bosser Eye summons all of the universe and forces you into a wormhole!"
                 }
             ],
-            "hp": 4050,
-            "damage_low_range": 215,
-            "damage_high_range": 239,
-            "gold_low_range": 130,
-            "gold_high_range": 141,
-            "xp_low_range": 1,
-            "xp_high_range": 17
+            "hp": 12050,
+            "damage_low_range": 965,
+            "damage_high_range": 1059,
+            "gold_low_range": 500,
+            "gold_high_range": 650,
+            "xp_low_range": 40,
+            "xp_high_range": 60,
+            "drop": "wormhole"
         }
     ]
 }
