@@ -159,11 +159,31 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
 
     var level = parseInt(req.params.level, 10);
     var config = require('../config/level' + level);
+    var pharmacy = false;
+
+    if (config.pharmacy) {
+      pharmacy = true;
+    }
 
     res.render('game_preview', {
       pageType: 'game level' + level,
       level: level,
-      title: config.location
+      title: config.location,
+      pharmacy: pharmacy
+    });
+  });
+
+  app.get('/pharmacy/:level', isLoggedIn, hasJob, sufficientLevelAccess,
+    resetEnemy, function(req, res) {
+
+    var level = parseInt(req.params.level, 10);
+    var config = require('../config/level' + level);
+    var items = config.pharmacy;
+
+    res.render('pharmacy', {
+      pageType: 'pharmacy',
+      title: 'Pharmacy',
+      items: items
     });
   });
 

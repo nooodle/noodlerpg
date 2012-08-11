@@ -1,0 +1,20 @@
+extend layout
+
+block content
+  h1= title
+
+  ul.items
+    - for (var i = 0; i < items.length; i ++) {
+      - var name = items[i].name.toLowerCase().replace(/\s/, '_');
+      li(data-cost='#{items[i].cost}')
+        img(src='/tools/#{name}.png')
+        span.cost= items[i].cost
+        span.item-type(data-key='#{name}')= items[i].name
+        .requirements
+          = items[i].message
+    - }
+
+  ul.stats
+    li
+      h3 Gold Available
+      span.gold= session.gold

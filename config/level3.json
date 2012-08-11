@@ -1,5 +1,14 @@
 {
     "location": "Planet Redzone",
+    "pharmacy":
+    [
+        {
+            "name": "health plus",
+            "cost": 140,
+            "message": "Gives you extra plus health",
+            "amount": 100
+        }
+    ],
     "enemies":
     [
         {
