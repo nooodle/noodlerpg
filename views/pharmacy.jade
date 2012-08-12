@@ -1,17 +1,32 @@
 extend layout
 
+mixin itemList(item, name, enabled)
+  li(class='#{enabled}', data-cost='#{item.cost}')
+    img(src='/tools/#{name}.png')
+    span.cost= item.cost
+    span.tool-type(data-key='#{name}', data-health='true', data-amount='#{item.amount}')= item.name
+    .requirements
+      = item.message
+
 block content
   h1= title
 
   ul.items
+    - var cannotPurchase = function(item) {
+      - if (item.cost > session.gold) {
+        - return true;
+      - } else {
+        - return false;
+      - }
+    - };
+
     - for (var i = 0; i < items.length; i ++) {
       - var name = items[i].name.toLowerCase().replace(/\s/, '_');
-      li(data-cost='#{items[i].cost}')
-        img(src='/tools/#{name}.png')
-        span.cost= items[i].cost
-        span.item-type(data-key='#{name}')= items[i].name
-        .requirements
-          = items[i].message
+      - var enabled = 'enabled';
+      - if (cannotPurchase(items[i])) {
+        enabled = 'disabled';
+      - }
+      mixin itemList(items[i], name, enabled)
     - }
 
   ul.stats

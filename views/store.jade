@@ -16,21 +16,6 @@ mixin toolList(tool, enabled)
               = tool.prerequisites[item].replace('_', ' ')
           - }
 
-mixin toolPurchase(name)
-  - var enabled = 'enabled';
-  - if (canPurchase(session, name)) {
-    enabled = 'disabled';
-  - } else {
-    - if (tools[name].prerequisites.length > 0) {
-      - for (var i = 0; i < tools[name].prerequisites.length; i ++) {
-        - if (!session.tools[tools[name].prerequisites[i]] && !session.activeTools[tools[name].prerequisites[i]]) {
-          - enabled = 'disabled';
-          - break;
-        - }
-      - }
-    - }
-  - }
-
 block content
   h1= title
 

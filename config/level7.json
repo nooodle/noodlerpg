@@ -1,5 +1,14 @@
 {
     "location": "Slaughterhouse Star",
+    "pharmacy":
+    [
+        {
+            "name": "health 600",
+            "cost": 340,
+            "message": "Gives you +600 health",
+            "amount": 600
+        }
+    ],
     "enemies":
     [
         {

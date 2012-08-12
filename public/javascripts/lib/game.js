@@ -11,7 +11,7 @@ define(['jquery'], function ($) {
   var goldAmount = $('.stats .gold');
   var currentTools = $('.dashboard .tools ul');
   var inventory = $('.dashboard .inventory ul');
-  var activeStoreItems = $('.store .items li.enabled');
+  var activeStoreItems = $('.items li.enabled');
   var drop = $('#drop img');
 
   var updateStats = function(options) {
@@ -109,16 +109,25 @@ define(['jquery'], function ($) {
 
     buy: function(self) {
       var goldAmountNum = parseInt(goldAmount.text(), 10);
-
+      var toolType = self.find('span.tool-type');
+      var buyUrl = '/buy';
       var params = {
         cost: parseInt(self.find('span.cost').text(), 10),
-        tool: self.find('span.tool-type').data('key')
+        tool: toolType.data('key')
       };
 
+      if (toolType.data('health')) {
+        params.health = true;
+        params.amount = toolType.data('amount');
+        buyUrl = '/refuel';
+      }
+
       if (goldAmountNum >= params.cost && !self.hasClass('disabled')) {
-        $.post('/buy', params, function(data) {
+        $.post(buyUrl, params, function(data) {
           goldAmount.text(data.result.gold);
-          self.removeClass('enabled').addClass('disabled');
+          if (!toolType.data('health')) {
+            self.removeClass('enabled').addClass('disabled');
+          }
           activeStoreItems.each(function(idx, item) {
             var item = $(this);
             if (item.data('cost') > data.result.gold) {

@@ -1,5 +1,14 @@
 {
     "location": "Exploding Fireballs",
+    "pharmacy":
+    [
+        {
+            "name": "health 300",
+            "cost": 185,
+            "message": "Gives you +300 health",
+            "amount": 300
+        }
+    ],
     "enemies":
     [
         {

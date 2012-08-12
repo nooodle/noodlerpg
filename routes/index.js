@@ -82,6 +82,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
 
   app.post('/buy', isLoggedIn, resetEnemy, function(req, res) {
     var toolName = req.body.tool;
+    var cost = parseInt(req.body.cost, 10);
     var gold = parseInt(req.session.gold, 10);
 
     if (!req.session.activeTools[toolName] &&
@@ -89,7 +90,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
       gold >= tools[toolName].cost &&
       parseInt(req.session.level, 10) >= tools[toolName].min_level) {
 
-      req.session.gold = gold - parseInt(req.body.cost, 10);
+      req.session.gold = gold - cost;
       req.session.tools[toolName] = tools[toolName];
     }
 
@@ -137,6 +138,24 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
     });
   });
 
+  app.post('/refuel', isLoggedIn, resetEnemy, function(req, res) {
+    var data = { result: {} };
+
+    user.refuel(req, db, function(err, userResp) {
+      if (err) {
+        data.result.status = 500;
+      } else {
+        data.result = {
+          hp: userResp.hp,
+          gold: userResp.gold,
+          status: 200
+        };
+      }
+
+      res.json(data);
+    });
+  });
+
   app.get('/job', isLoggedIn, hasNoJob, resetEnemy, function(req, res) {
     res.render('job', {
       pageType: 'job',
@@ -166,7 +185,7 @@ module.exports = function(app, db, isLoggedIn, hasJob, hasNoJob,
     }
 
     res.render('game_preview', {
-      pageType: 'game level' + level,
+      pageType: 'game preview level' + level,
       level: level,
       title: config.location,
       pharmacy: pharmacy

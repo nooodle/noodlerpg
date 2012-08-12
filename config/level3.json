@@ -3,9 +3,9 @@
     "pharmacy":
     [
         {
-            "name": "health plus",
+            "name": "health 100",
             "cost": 140,
-            "message": "Gives you extra plus health",
+            "message": "Gives you +100 health",
             "amount": 100
         }
     ],

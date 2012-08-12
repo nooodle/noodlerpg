@@ -1,5 +1,14 @@
 {
     "location": "Planet Nein",
+    "pharmacy":
+    [
+        {
+            "name": "health 15",
+            "cost": 10,
+            "message": "Gives you +15 health",
+            "amount": 15
+        }
+    ],
     "enemies":
     [
         {
