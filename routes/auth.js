@@ -15,6 +15,7 @@ module.exports = function(app, db, nconf, isLoggedIn) {
           res.redirect('/dashboard');
         });
       } else {
+        req.flash('error', 'An error occurred while attempting to log in.');
         res.redirect('/');
       }
     });

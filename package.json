@@ -14,7 +14,8 @@
     "hiredis": "0.1.14",
     "redis": "0.7.2",
     "nconf": "0.6.4",
-    "express-uglify": "0.3.0"
+    "express-uglify": "0.3.0",
+    "express-messages": ">= 0.0.2"
   },
   "devDependencies": {
     "mocha": "1.2.2",

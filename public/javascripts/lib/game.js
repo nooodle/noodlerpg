@@ -5,6 +5,7 @@ define(['jquery'], function ($) {
   var stats = $('ol.stats');
   var statsDashboard = $('ol.dashboard-stats');
   var player = $('img.player');
+  var tools = $('ol.tools');
   var fightAction = $('img.action');
   var message = $('.battle-message');
   var fightAgain = $('.fight-again');
@@ -71,6 +72,7 @@ define(['jquery'], function ($) {
           playerHP = 0;
           message.text('You lost :(');
         }
+        tools.fadeOut();
       }
 
       updateStats({
@@ -102,7 +104,6 @@ define(['jquery'], function ($) {
         };
 
         fightAction.fadeIn();
-
         battleTrigger(params);
       }
     },
@@ -128,6 +129,7 @@ define(['jquery'], function ($) {
           if (!toolType.data('health')) {
             self.removeClass('enabled').addClass('disabled');
           }
+
           activeStoreItems.each(function(idx, item) {
             var item = $(this);
             if (item.data('cost') > data.result.gold) {

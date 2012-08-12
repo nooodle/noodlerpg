@@ -16,10 +16,13 @@ block content
           a(href='/universe', class='button') Explore!
         if session.last_level_played
           a(href='/detail/#{session.last_level_played}', class='button') Last Location
+        a(href='/store', class='button') Store
       li#hp
         h3 HP
         span= session.hp
-        a(href='/store', class='button') Store
+        if parseInt(session.hp) < 100
+          .info-tip Need more health? Look for this
+            img(src='/misc/pharmacy-preview.png')
       li#xp
         h3 XP
         span= session.xp

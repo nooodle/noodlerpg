@@ -57,7 +57,8 @@ module.exports = function(app, configurations, express) {
   app.dynamicHelpers({
     session: function (req, res) {
       return req.session;
-    }
+    },
+    messages: require('express-messages')
   });
 
   return app;

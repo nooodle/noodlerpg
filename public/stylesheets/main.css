@@ -121,6 +121,18 @@ a {
     overflow: hidden;
 }
 
+#messages {
+    background-color: #f00;
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    font-size: 17px;
+    line-height: 22px;
+    padding: 10px;
+    width: 200px;
+    left: 300px;
+}
+
 h1 {
     font-family: 'CabinSketchRegular';
     font-size: 100px;
@@ -877,4 +889,10 @@ a.fight-again:hover {
     padding: 15px 50px 30px 60px;
     height: 107px;
     width: 200px;
+}
+
+#hp .info-tip {
+    top: 82px;
+    height: 228px;
+    padding: 15px 50px 30px 55px;
 }
